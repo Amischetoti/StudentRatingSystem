@@ -1,0 +1,239 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StudentRatingSystemLib</name>
+    </assembly>
+    <members>
+        <member name="T:StudentRatingSystemLib.Entities.Grade">
+            <summary>
+            Оценка за выполнение задания.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Grade.Grade_id">
+            <summary>
+            Уникальный идентификатор оценки.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Grade.ReceivedPoint">
+            <summary>
+            Полученное количество баллов.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Grade.ExtraPoint">
+            <summary>
+            Дополнительные баллы.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Grade.DateOfAssessment">
+            <summary>
+            Дата оценки (в строковом формате).
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Grade.QuestId">
+            <summary>
+            Идентификатор задания (внешний ключ).
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Grade.Quest">
+            <summary>
+            Навигационное свойство к заданию.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Grade.Position">
+            <summary>
+            Позиция (порядковый номер).
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemLib.Entities.Grade.ToString">
+            <summary>
+            Возвращает строковое представление оценки.
+            </summary>
+            <returns>Строка с информацией о баллах.</returns>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Grade.FinalScore">
+            <summary>
+            Итоговый балл (сумма полученных и дополнительных баллов).
+            </summary>
+        </member>
+        <member name="T:StudentRatingSystemLib.Entities.Quest">
+            <summary>
+            Задание для студента.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Quest.Quest_id">
+            <summary>
+            Уникальный идентификатор задания.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Quest.TypeOfTask">
+            <summary>
+            Тип задания.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Quest.DateOfCompletion">
+            <summary>
+            Дата выполнения задания.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Quest.NumberOfPoints">
+            <summary>
+            Количество баллов, максимально возможных за задание.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Quest.StudentId">
+            <summary>
+            Идентификатор студента (внешний ключ).
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Quest.Student">
+            <summary>
+            Навигационное свойство к студенту.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemLib.Entities.Quest.ToString">
+            <summary>
+            Возвращает строковое представление задания.
+            </summary>
+            <returns>Строка с типом задания и количеством баллов.</returns>
+        </member>
+        <member name="T:StudentRatingSystemLib.Entities.Student">
+            <summary>
+            Студент, выполняющий задания.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Student.Student_id">
+            <summary>
+            Уникальный идентификатор студента.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Student.FIO">
+            <summary>
+            ФИО студента.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Student.Group">
+            <summary>
+            Группа студента.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Student.Contact">
+            <summary>
+            Контактные данные студента.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Student.SubjectId">
+            <summary>
+            Идентификатор предмета (внешний ключ).
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Student.Subject">
+            <summary>
+            Навигационное свойство к предмету.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemLib.Entities.Student.ToString">
+            <summary>
+            Возвращает строковое представление студента.
+            </summary>
+            <returns>ФИО студента.</returns>
+        </member>
+        <member name="T:StudentRatingSystemLib.Entities.Subject">
+            <summary>
+            Предмет, который изучает студент.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Subject.Subject_id">
+            <summary>
+            Уникальный идентификатор предмета.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Subject.SubjectName">
+            <summary>
+            Название предмета.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Subject.TeacherId">
+            <summary>
+            Идентификатор учителя (внешний ключ).
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Subject.Teacher">
+            <summary>
+            Навигационное свойство к учителю.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemLib.Entities.Subject.ToString">
+            <summary>
+            Возвращает строковое представление предмета.
+            </summary>
+            <returns>Название предмета.</returns>
+        </member>
+        <member name="T:StudentRatingSystemLib.Entities.Teacher">
+            <summary>
+            Учитель, ведущий предмет.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Teacher.Teacher_id">
+            <summary>
+            Уникальный идентификатор учителя.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Teacher.FIO">
+            <summary>
+            ФИО учителя.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.Teacher.Contact">
+            <summary>
+            Контактные данные учителя.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemLib.Entities.Teacher.ToString">
+            <summary>
+            Возвращает строковое представление учителя.
+            </summary>
+            <returns>ФИО учителя.</returns>
+        </member>
+        <member name="T:StudentRatingSystemLib.Entities.User">
+            <summary>
+            Пользователь системы.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.User.Id">
+            <summary>
+            Уникальный идентификатор пользователя.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.User.Firstname">
+            <summary>
+            Имя пользователя.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.User.Lastname">
+            <summary>
+            Фамилия пользователя.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.User.Middlename">
+            <summary>
+            Отчество пользователя.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.User.Login">
+            <summary>
+            Логин пользователя.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.User.Password">
+            <summary>
+            Пароль пользователя.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemLib.Entities.User.Fullname">
+            <summary>
+            Полное имя пользователя (Фамилия Имя Отчество).
+            Если отчество отсутствует, возвращается только Фамилия и Имя.
+            </summary>
+        </member>
+    </members>
+</doc>

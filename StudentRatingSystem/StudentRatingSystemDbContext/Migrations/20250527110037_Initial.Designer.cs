@@ -12,7 +12,7 @@ using StudentRatingSystemDbContext.Connections;
 namespace StudentRatingSystemDbContext.Migrations
 {
     [DbContext(typeof(SQLServerDbContext))]
-    [Migration("20250526074919_Initial")]
+    [Migration("20250527110037_Initial")]
     partial class Initial
     {
         /// <inheritdoc />

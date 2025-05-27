@@ -1,0 +1,602 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StudentRatingSystemDbContext</name>
+    </assembly>
+    <members>
+        <member name="T:StudentRatingSystemDbContext.Abstraction.BaseService`1">
+            <summary>
+            Абстрактный базовый сервис для операций с сущностями типа <typeparamref name="T"/>.
+            Реализует интерфейс <see cref="T:StudentRatingSystemDbContext.Abstraction.IService`1"/> и предоставляет общие методы для работы с базой данных.
+            </summary>
+            <typeparam name="T">Тип сущности, с которой работает сервис.</typeparam>
+        </member>
+        <member name="F:StudentRatingSystemDbContext.Abstraction.BaseService`1.ctx">
+            <summary>
+            Контекст базы данных для доступа к данным.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Abstraction.BaseService`1.#ctor">
+            <summary>
+            Конструктор, инициализирующий контекст базы данных через синглтон.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Abstraction.BaseService`1.GetEntities">
+            <summary>
+            Абстрактный метод получения всех сущностей типа <typeparamref name="T"/>.
+            </summary>
+            <returns>Асинхронная задача с перечислением сущностей или null-значениями.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Abstraction.BaseService`1.GetEntity(System.Guid)">
+            <summary>
+            Абстрактный метод получения одной сущности по уникальному идентификатору.
+            </summary>
+            <param name="id">Идентификатор сущности.</param>
+            <returns>Асинхронная задача с найденной сущностью или null.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Abstraction.BaseService`1.Add(`0)">
+            <summary>
+            Абстрактный метод добавления новой сущности.
+            </summary>
+            <param name="entity">Сущность для добавления.</param>
+            <returns>Асинхронная задача, возвращающая результат операции добавления.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Abstraction.BaseService`1.Update(`0,`0)">
+            <summary>
+            Абстрактный метод обновления существующей сущности.
+            </summary>
+            <param name="entity">Существующая сущность для обновления.</param>
+            <param name="newEntity">Новая сущность с обновленными данными.</param>
+            <returns>Асинхронная задача, возвращающая результат операции обновления.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Abstraction.BaseService`1.Remove(`0)">
+            <summary>
+            Абстрактный метод удаления сущности.
+            </summary>
+            <param name="entity">Сущность для удаления.</param>
+            <returns>Асинхронная задача, возвращающая результат операции удаления.</returns>
+        </member>
+        <member name="T:StudentRatingSystemDbContext.Abstraction.DbEntityServiceBase`1">
+            <summary>
+            Абстрактный базовый класс сервиса для управления сущностями базы данных типа <typeparamref name="T"/>.
+            Реализует интерфейс <see cref="T:StudentRatingSystemDbContext.Abstraction.IBaseManagement`1"/> и предоставляет базовую реализацию для удаления сущностей.
+            </summary>
+            <typeparam name="T">Тип сущности базы данных.</typeparam>
+        </member>
+        <member name="F:StudentRatingSystemDbContext.Abstraction.DbEntityServiceBase`1.ctx">
+            <summary>
+            Контекст базы данных для выполнения операций с сущностями.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Abstraction.DbEntityServiceBase`1.#ctor">
+            <summary>
+            Конструктор, инициализирующий контекст базы данных через синглтон.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Abstraction.DbEntityServiceBase`1.GetEntities">
+            <summary>
+            Абстрактный метод получения всех сущностей типа <typeparamref name="T"/>.
+            </summary>
+            <returns>Асинхронная задача с перечислением сущностей или null-значениями.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Abstraction.DbEntityServiceBase`1.GetEntity(System.Guid)">
+            <summary>
+            Абстрактный метод получения одной сущности по уникальному идентификатору.
+            </summary>
+            <param name="id">Идентификатор сущности.</param>
+            <returns>Асинхронная задача с найденной сущностью или null.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Abstraction.DbEntityServiceBase`1.Add(`0)">
+            <summary>
+            Абстрактный метод добавления новой сущности.
+            </summary>
+            <param name="entity">Сущность для добавления.</param>
+            <returns>Асинхронная задача, возвращающая результат операции добавления.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Abstraction.DbEntityServiceBase`1.Update(`0,`0)">
+            <summary>
+            Абстрактный метод обновления существующей сущности.
+            </summary>
+            <param name="entity">Существующая сущность для обновления.</param>
+            <param name="newEntity">Новая сущность с обновленными данными.</param>
+            <returns>Асинхронная задача, возвращающая результат операции обновления.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Abstraction.DbEntityServiceBase`1.Remove(`0)">
+            <summary>
+            Виртуальный метод для удаления сущности из базы данных.
+            Выполняет удаление и сохраняет изменения.
+            При ошибке возвращает false и логирует сообщение с помощью <see cref="M:System.Diagnostics.Debug.WriteLine(System.Object)"/>.
+            </summary>
+            <param name="entity">Сущность для удаления.</param>
+            <returns>Асинхронная задача с результатом успешности операции удаления.</returns>
+        </member>
+        <member name="T:StudentRatingSystemDbContext.Abstraction.IAccountManagement`1">
+            <summary>
+            Интерфейс для управления аккаунтами, предоставляющий метод получения аккаунта по логину и паролю.
+            </summary>
+            <typeparam name="T">Тип модели аккаунта.</typeparam>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Abstraction.IAccountManagement`1.GetAccount(System.String,System.String)">
+            <summary>
+            Получение аккаунта по логину и паролю.
+            </summary>
+            <param name="login">Логин пользователя.</param>
+            <param name="password">Пароль пользователя.</param>
+            <returns>Асинхронная задача, возвращающая аккаунт или null, если не найдено.</returns>
+        </member>
+        <member name="T:StudentRatingSystemDbContext.Abstraction.IBaseManagement`1">
+            <summary>
+            Интерфейс базового управления сущностями, реализующий основные операции CRUD.
+            </summary>
+            <typeparam name="T">Тип управляемой сущности.</typeparam>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Abstraction.IBaseManagement`1.GetEntities">
+            <summary>
+            Получение всех сущностей.
+            </summary>
+            <returns>Асинхронная задача, возвращающая перечисление сущностей или null.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Abstraction.IBaseManagement`1.GetEntity(System.Guid)">
+            <summary>
+            Получение сущности по уникальному идентификатору.
+            </summary>
+            <param name="id">GUID идентификатор.</param>
+            <returns>Асинхронная задача, возвращающая сущность или null.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Abstraction.IBaseManagement`1.Add(`0)">
+            <summary>
+            Добавление новой сущности.
+            </summary>
+            <param name="entity">Сущность для добавления.</param>
+            <returns>Асинхронная задача, возвращающая результат операции.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Abstraction.IBaseManagement`1.Update(`0,`0)">
+            <summary>
+            Обновление существующей сущности.
+            </summary>
+            <param name="entity">Исходная сущность.</param>
+            <param name="newEntity">Обновленная сущность.</param>
+            <returns>Асинхронная задача, возвращающая результат операции.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Abstraction.IBaseManagement`1.Remove(`0)">
+            <summary>
+            Удаление сущности.
+            </summary>
+            <param name="entity">Сущность для удаления.</param>
+            <returns>Асинхронная задача, возвращающая результат операции.</returns>
+        </member>
+        <member name="T:StudentRatingSystemDbContext.Abstraction.IService`1">
+            <summary>
+            Интерфейс сервиса, предоставляющего операции управления сущностями.
+            </summary>
+            <typeparam name="T">Тип управляемой сущности.</typeparam>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Abstraction.IService`1.GetEntities">
+            <summary>
+            Получение всех сущностей.
+            </summary>
+            <returns>Асинхронная задача, возвращающая перечисление сущностей или null.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Abstraction.IService`1.GetEntity(System.Guid)">
+            <summary>
+            Получение сущности по идентификатору.
+            </summary>
+            <param name="id">GUID идентификатор.</param>
+            <returns>Асинхронная задача, возвращающая сущность или null.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Abstraction.IService`1.Add(`0)">
+            <summary>
+            Добавление новой сущности.
+            </summary>
+            <param name="entity">Сущность для добавления.</param>
+            <returns>Асинхронная задача, возвращающая результат операции.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Abstraction.IService`1.Update(`0,`0)">
+            <summary>
+            Обновление сущности.
+            </summary>
+            <param name="entity">Исходная сущность.</param>
+            <param name="newEntity">Обновленная сущность.</param>
+            <returns>Асинхронная задача, возвращающая результат операции.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Abstraction.IService`1.Remove(`0)">
+            <summary>
+            Удаление сущности.
+            </summary>
+            <param name="entity">Сущность для удаления.</param>
+            <returns>Асинхронная задача, возвращающая результат операции.</returns>
+        </member>
+        <member name="T:StudentRatingSystemDbContext.Connections.AppDbContext">
+            <summary>
+            Абстрактный класс, представляющий контекст приложения для работы с базами данных.
+            Наследуется от DbContext (Entity Framework Core).
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemDbContext.Connections.AppDbContext.Grades">
+            <summary>
+            Коллекция объектов оценок.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemDbContext.Connections.AppDbContext.Quests">
+            <summary>
+            Коллекция объектов заданий (Quest).
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemDbContext.Connections.AppDbContext.Students">
+            <summary>
+            Коллекция объектов студентов.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemDbContext.Connections.AppDbContext.Subjects">
+            <summary>
+            Коллекция предметов.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemDbContext.Connections.AppDbContext.Teachers">
+            <summary>
+            Коллекция объектов учителей.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemDbContext.Connections.AppDbContext.Users">
+            <summary>
+            Коллекция объектов пользователей.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Connections.AppDbContext.SaveChangesAsync(System.Threading.CancellationToken)">
+            <summary>
+            Переопределенный метод сохранения изменений в базе данных.
+            </summary>
+            <param name="cancellationToken">Токен отмены операции.</param>
+            <returns>Задача, содержащая количество сохраненных записей.</returns>
+        </member>
+        <member name="T:StudentRatingSystemDbContext.Connections.DbContextSingleton">
+            <summary>
+            Синглтон для управления единственным экземпляром <see cref="T:StudentRatingSystemDbContext.Connections.SQLServerDbContext"/>.
+            Обеспечивает глобальную точку доступа к контексту базы данных.
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemDbContext.Connections.DbContextSingleton.instance">
+            <summary>
+            Единственный экземпляр синглтона.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemDbContext.Connections.DbContextSingleton.DbContext">
+            <summary>
+            Контекст базы данных SQL Server.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Connections.DbContextSingleton.#ctor">
+            <summary>
+            Приватный конструктор, инициализирующий контекст базы данных.
+            Выводит сообщение в отладчик о создании экземпляра.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemDbContext.Connections.DbContextSingleton.Instance">
+            <summary>
+            Получает единственный экземпляр синглтона.
+            Если экземпляр еще не создан, создаёт новый.
+            </summary>
+        </member>
+        <member name="T:StudentRatingSystemDbContext.Connections.SQLServerDbContext">
+            <summary>
+            Класс, представляющий контекст для работы с базой данных SQL Server.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Connections.SQLServerDbContext.#ctor">
+            <summary>
+            Конструктор класса SQLServerDbContext.
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemDbContext.Connections.SQLServerDbContext._connectionString">
+            <summary>
+            Строка подключения к базе данных SQL Server.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Connections.SQLServerDbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
+            <summary>
+            Настраивает параметры подключения к базе данных.
+            </summary>
+            <param name="optionsBuilder">Объект, позволяющий настроить параметры контекста базы данных.</param>
+        </member>
+        <member name="T:StudentRatingSystemDbContext.Services.GradeService">
+            <summary>
+            Класс сервиса для управления сущностью <see cref="T:StudentRatingSystemLib.Entities.Grade"/>,
+            реализующий операции получения, добавления, обновления и удаления оценок.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.GradeService.GetEntities">
+            <summary>
+            Получение всех оценок.
+            </summary>
+            <returns>Асинхронная задача, возвращающая перечисление оценок.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.GradeService.GetEntity(System.Guid)">
+            <summary>
+            Получение оценки по уникальному идентификатору.
+            </summary>
+            <param name="id">GUID оценки.</param>
+            <returns>Асинхронная задача, возвращающая оценку или null, если не найдена.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.GradeService.Add(StudentRatingSystemLib.Entities.Grade)">
+            <summary>
+            Добавление новой оценки.
+            </summary>
+            <param name="entity">Объект оценки для добавления.</param>
+            <returns>Асинхронная задача, возвращающая успех операции.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.GradeService.Update(StudentRatingSystemLib.Entities.Grade,StudentRatingSystemLib.Entities.Grade)">
+            <summary>
+            Обновление существующей оценки.
+            </summary>
+            <param name="entity">Объект текущей оценки.</param>
+            <param name="newEntity">Объект с новыми данными.</param>
+            <returns>Асинхронная задача, возвращающая успех операции.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.GradeService.Remove(StudentRatingSystemLib.Entities.Grade)">
+            <summary>
+            Удаление оценки.
+            </summary>
+            <param name="entity">Объект оценки для удаления.</param>
+            <returns>Асинхронная задача, возвращающая успех операции.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.GradeService.SaveChangesAsync">
+            <summary>
+            Внутренний метод для сохранения изменений в базе данных.
+            </summary>
+            <returns>Асинхронная задача, возвращающая успех сохранения.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.GradeService.UpdateGradesPositions(System.Guid)">
+            <summary>
+            Обновление позиций оценок для указанного задания.
+            </summary>
+            <param name="questId">GUID задания.</param>
+            <returns>Задача, завершающаяся после обновления.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.GradeService.UpdateAndGetGrades(System.Guid)">
+            <summary>
+            Обновление позиций и получение актуальных оценок для задания.
+            </summary>
+            <param name="questId">GUID задания.</param>
+            <returns>Перечисление оценок для задания, отсортированное по полученным баллам.</returns>
+        </member>
+        <member name="T:StudentRatingSystemDbContext.Services.QuestService">
+            <summary>
+            Сервис для работы с сущностью <see cref="T:StudentRatingSystemLib.Entities.Quest"/>,
+            предоставляет операции получения, добавления, обновления и удаления заданий.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.QuestService.GetEntities">
+            <summary>
+            Получение всех заданий.
+            </summary>
+            <returns>Асинхронная задача, возвращающая перечисление заданий.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.QuestService.GetEntity(System.Guid)">
+            <summary>
+            Получение задания по уникальному идентификатору.
+            </summary>
+            <param name="id">GUID задания.</param>
+            <returns>Асинхронная задача, возвращающая задание или null, если не найдено.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.QuestService.Add(StudentRatingSystemLib.Entities.Quest)">
+            <summary>
+            Добавление нового задания.
+            </summary>
+            <param name="entity">Объект задания для добавления.</param>
+            <returns>Асинхронная задача, возвращающая успех операции.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.QuestService.Update(StudentRatingSystemLib.Entities.Quest,StudentRatingSystemLib.Entities.Quest)">
+            <summary>
+            Обновление существующего задания.
+            </summary>
+            <param name="entity">Объект текущего задания.</param>
+            <param name="newEntity">Объект с новыми данными.</param>
+            <returns>Асинхронная задача, возвращающая успех операции.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.QuestService.Remove(StudentRatingSystemLib.Entities.Quest)">
+            <summary>
+            Удаление задания.
+            </summary>
+            <param name="entity">Объект задания для удаления.</param>
+            <returns>Асинхронная задача, возвращающая успех операции.</returns>
+        </member>
+        <member name="T:StudentRatingSystemDbContext.Services.StudentService">
+            <summary>
+            Сервис для работы с сущностью <see cref="T:StudentRatingSystemLib.Entities.Student"/>,
+            реализующий операции получения, добавления, обновления и удаления студентов.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.StudentService.GetEntities">
+            <summary>
+            Получение всех студентов.
+            </summary>
+            <returns>Асинхронная задача, возвращающая перечисление студентов.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.StudentService.GetEntity(System.Guid)">
+            <summary>
+            Получение студента по уникальному идентификатору.
+            </summary>
+            <param name="id">GUID студента.</param>
+            <returns>Асинхронная задача, возвращающая студента или null, если не найдено.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.StudentService.Add(StudentRatingSystemLib.Entities.Student)">
+            <summary>
+            Добавление нового студента.
+            </summary>
+            <param name="entity">Объект студента для добавления.</param>
+            <returns>Асинхронная задача, возвращающая успех операции.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.StudentService.Update(StudentRatingSystemLib.Entities.Student,StudentRatingSystemLib.Entities.Student)">
+            <summary>
+            Обновление информации о студенте.
+            </summary>
+            <param name="entity">Объект текущего студента.</param>
+            <param name="newEntity">Объект с новыми данными.</param>
+            <returns>Асинхронная задача, возвращающая успех операции.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.StudentService.Remove(StudentRatingSystemLib.Entities.Student)">
+            <summary>
+            Удаление студента.
+            </summary>
+            <param name="entity">Объект студента для удаления.</param>
+            <returns>Асинхронная задача, возвращающая успех операции.</returns>
+        </member>
+        <member name="T:StudentRatingSystemDbContext.Services.SubjectService">
+            <summary>
+            Сервис для работы с сущностью <see cref="T:StudentRatingSystemLib.Entities.Subject"/>,
+            реализующий операции получения, добавления, обновления и удаления предметов.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.SubjectService.GetEntities">
+            <summary>
+            Получение всех предметов.
+            </summary>
+            <returns>Асинхронная задача, возвращающая перечисление предметов.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.SubjectService.GetEntity(System.Guid)">
+            <summary>
+            Получение предмета по уникальному идентификатору.
+            </summary>
+            <param name="id">GUID предмета.</param>
+            <returns>Асинхронная задача, возвращающая предмет или null, если не найдено.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.SubjectService.Add(StudentRatingSystemLib.Entities.Subject)">
+            <summary>
+            Добавление нового предмета.
+            </summary>
+            <param name="entity">Объект предмета для добавления.</param>
+            <returns>Асинхронная задача, возвращающая успех операции.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.SubjectService.Update(StudentRatingSystemLib.Entities.Subject,StudentRatingSystemLib.Entities.Subject)">
+            <summary>
+            Обновление информации о предмете.
+            </summary>
+            <param name="entity">Объект текущего предмета.</param>
+            <param name="newEntity">Объект с новыми данными.</param>
+            <returns>Асинхронная задача, возвращающая успех операции.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.SubjectService.Remove(StudentRatingSystemLib.Entities.Subject)">
+            <summary>
+            Удаление предмета.
+            </summary>
+            <param name="entity">Объект предмета для удаления.</param>
+            <returns>Асинхронная задача, возвращающая успех операции.</returns>
+        </member>
+        <member name="T:StudentRatingSystemDbContext.Services.TeacherService">
+            <summary>
+            Сервис для работы с сущностью <see cref="T:StudentRatingSystemLib.Entities.Teacher"/>,
+            реализующий операции получения, добавления, обновления и удаления учителей.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.TeacherService.GetEntities">
+            <summary>
+            Получение всех учителей.
+            </summary>
+            <returns>Асинхронная задача, возвращающая перечисление учителей.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.TeacherService.GetEntity(System.Guid)">
+            <summary>
+            Получение учителя по уникальному идентификатору.
+            </summary>
+            <param name="id">GUID учителя.</param>
+            <returns>Асинхронная задача, возвращающая учителя или null, если не найдено.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.TeacherService.Add(StudentRatingSystemLib.Entities.Teacher)">
+            <summary>
+            Добавление нового учителя.
+            </summary>
+            <param name="entity">Объект учителя для добавления.</param>
+            <returns>Асинхронная задача, возвращающая успех операции.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.TeacherService.Update(StudentRatingSystemLib.Entities.Teacher,StudentRatingSystemLib.Entities.Teacher)">
+            <summary>
+            Обновление информации об учителе.
+            </summary>
+            <param name="entity">Объект текущего учителя.</param>
+            <param name="newEntity">Объект с новыми данными.</param>
+            <returns>Асинхронная задача, возвращающая успех операции.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.TeacherService.Remove(StudentRatingSystemLib.Entities.Teacher)">
+            <summary>
+            Удаление учителя.
+            </summary>
+            <param name="entity">Объект учителя для удаления.</param>
+            <returns>Асинхронная задача, возвращающая успех операции.</returns>
+        </member>
+        <member name="T:StudentRatingSystemDbContext.Services.UserService">
+            <summary>
+            Сервис для управления пользователями, реализующий операции добавления, получения и обновления пользователей.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.UserService.Add(StudentRatingSystemLib.Entities.User)">
+            <summary>
+            Добавление нового пользователя.
+            </summary>
+            <param name="entity">Объект пользователя, которого необходимо добавить.</param>
+            <returns>Асинхронная задача, возвращающая true при успешном добавлении, иначе false.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.UserService.GetEntities">
+            <summary>
+            Получение всех пользователей.
+            </summary>
+            <returns>Асинхронная задача, возвращающая коллекцию пользователей.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.UserService.GetAccount(System.String,System.String)">
+            <summary>
+            Получение пользователя по логину и паролю.
+            </summary>
+            <param name="login">Логин пользователя.</param>
+            <param name="password">Пароль пользователя.</param>
+            <returns>Асинхронная задача, возвращающая пользователя или null, если не найдено.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.UserService.GetEntity(System.Guid)">
+            <summary>
+            Получение пользователя по уникальному идентификатору.
+            </summary>
+            <param name="id">GUID пользователя.</param>
+            <returns>Асинхронная задача, возвращающая пользователя или null при отсутствии.</returns>
+        </member>
+        <member name="M:StudentRatingSystemDbContext.Services.UserService.Update(StudentRatingSystemLib.Entities.User,StudentRatingSystemLib.Entities.User)">
+            <summary>
+            Обновление данных пользователя.
+            </summary>
+            <param name="entity">Объект пользователя для обновления.</param>
+            <param name="newEntity">Объект с новыми данными.</param>
+            <returns>Асинхронная задача, возвращающая true при успешном обновлении, иначе false.</returns>
+        </member>
+        <member name="T:FoodSupplyIStudentRatingSystemDbContextnventoryManagementDBContext.Abstraction.ISupplyManagment`1">
+            <summary>
+            Интерфейс для управления статусами поставки.
+            </summary>
+            <typeparam name="T">Тип управляемого объекта поставки.</typeparam>
+        </member>
+        <member name="M:FoodSupplyIStudentRatingSystemDbContextnventoryManagementDBContext.Abstraction.ISupplyManagment`1.SetStatusWaiting(`0)">
+            <summary>
+            Установка статуса "Ожидает".
+            </summary>
+            <param name="entity">Объект поставки.</param>
+            <returns>Асинхронная задача с результатом операции.</returns>
+        </member>
+        <member name="M:FoodSupplyIStudentRatingSystemDbContextnventoryManagementDBContext.Abstraction.ISupplyManagment`1.SetStatusInProgress(`0)">
+            <summary>
+            Установка статуса "В процессе".
+            </summary>
+            <param name="entity">Объект поставки.</param>
+            <returns>Асинхронная задача с результатом операции.</returns>
+        </member>
+        <member name="M:FoodSupplyIStudentRatingSystemDbContextnventoryManagementDBContext.Abstraction.ISupplyManagment`1.SetStatusCompleted(`0)">
+            <summary>
+            Установка статуса "Завершена".
+            </summary>
+            <param name="entity">Объект поставки.</param>
+            <returns>Асинхронная задача с результатом операции.</returns>
+        </member>
+        <member name="M:FoodSupplyIStudentRatingSystemDbContextnventoryManagementDBContext.Abstraction.ISupplyManagment`1.SetStatusCanceled(`0)">
+            <summary>
+            Установка статуса "Отменена".
+            </summary>
+            <param name="entity">Объект поставки.</param>
+            <returns>Асинхронная задача с результатом операции.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,906 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StudentRatingSystemApp</name>
+    </assembly>
+    <members>
+        <member name="T:StudentRatingSystemApp.App">
+            <summary>
+            Interaction logic for App.xaml
+            Обеспечивает жизненный цикл и обработку событий приложения.
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.App.OnStartup(System.Windows.StartupEventArgs)">
+            <summary>
+            Переопределение метода запуска приложения.
+            После запуска отображает окно регистрации.
+            </summary>
+            <param name="e">Аргументы запуска.</param>
+        </member>
+        <member name="M:StudentRatingSystemApp.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:StudentRatingSystemApp.Commands.StudentRatingSystemApp.Commands.AsyncRelayCommand">
+            <summary>
+            Команда для асинхронного выполнения действия, реализующая интерфейс ICommand.
+            Позволяет запускать асинхронные методы с поддержкой проверки возможности выполнения (CanExecute).
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.Commands.StudentRatingSystemApp.Commands.AsyncRelayCommand.#ctor(System.Func{System.Threading.Tasks.Task},System.Func{System.Boolean})">
+            <summary>
+            Инициализирует новый экземпляр команды с указанным асинхронным методом и опциональной проверкой возможности выполнения.
+            </summary>
+            <param name="execute">Асинхронный метод для выполнения.</param>
+            <param name="canExecute">Метод проверки возможности выполнения команды.</param>
+        </member>
+        <member name="M:StudentRatingSystemApp.Commands.StudentRatingSystemApp.Commands.AsyncRelayCommand.CanExecute(System.Object)">
+            <summary>
+            Определяет, может ли команда быть выполнена в текущий момент.
+            </summary>
+            <param name="parameter">Параметр команды (не используется).</param>
+            <returns>True, если команда может быть выполнена; иначе — false.</returns>
+        </member>
+        <member name="E:StudentRatingSystemApp.Commands.StudentRatingSystemApp.Commands.AsyncRelayCommand.CanExecuteChanged">
+            <summary>
+            Событие, возникающее при изменении возможности выполнения команды.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.Commands.StudentRatingSystemApp.Commands.AsyncRelayCommand.Execute(System.Object)">
+            <summary>
+            Выполняет асинхронный метод команды.
+            </summary>
+            <param name="parameter">Параметр команды (не используется).</param>
+        </member>
+        <member name="M:StudentRatingSystemApp.Commands.StudentRatingSystemApp.Commands.AsyncRelayCommand.RaiseCanExecuteChanged">
+            <summary>
+            Вызывает событие <see cref="E:StudentRatingSystemApp.Commands.StudentRatingSystemApp.Commands.AsyncRelayCommand.CanExecuteChanged"/>, уведомляя об изменении статуса возможности выполнения команды.
+            </summary>
+        </member>
+        <member name="T:StudentRatingSystemApp.Commands.RelayCommand">
+            <summary>
+            Реализация интерфейса ICommand для синхронных команд с возможностью проверки.
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.Commands.RelayCommand._execute">
+            <summary>
+            Действие, выполняемое при вызове команды.
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.Commands.RelayCommand._canExecute">
+            <summary>
+            Функция для проверки, может ли команда выполняться.
+            </summary>
+        </member>
+        <member name="E:StudentRatingSystemApp.Commands.RelayCommand.CanExecuteChanged">
+            <summary>
+            Событие, вызываемое при изменении состояния возможности выполнения команды.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.Commands.RelayCommand.#ctor(System.Action{System.Object},System.Func{System.Object,System.Boolean})">
+            <summary>
+            Инициализация новой команды с указанными методами выполнения и проверки.
+            </summary>
+            <param name="execute">Метод, выполняемый командой.</param>
+            <param name="canExecute">Метод, проверяющий возможность выполнения команды. Необязательный.</param>
+        </member>
+        <member name="M:StudentRatingSystemApp.Commands.RelayCommand.CanExecute(System.Object)">
+            <summary>
+            Проверяет, может ли команда быть выполнена в текущий момент.
+            </summary>
+            <param name="parameter">Параметр команды.</param>
+            <returns>True, если команда может быть выполнена; иначе — false.</returns>
+        </member>
+        <member name="M:StudentRatingSystemApp.Commands.RelayCommand.Execute(System.Object)">
+            <summary>
+            Выполняет команду.
+            </summary>
+            <param name="parameter">Параметр команды.</param>
+        </member>
+        <member name="T:StudentRatingSystemApp.Commands.ViewModelBase">
+            <summary>
+            Базовый класс для моделей представления (ViewModel) с поддержкой уведомления об изменении свойств и управлением окнами.
+            </summary>
+        </member>
+        <member name="E:StudentRatingSystemApp.Commands.ViewModelBase.PropertyChanged">
+            <summary>
+            Событие, возникающее при изменении значения свойства.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.Commands.ViewModelBase.Set``1(``0@,``0,System.String)">
+            <summary>
+            Устанавливает новое значение поля и оповещает об изменении свойства, если значение изменилось.
+            </summary>
+            <typeparam name="T">Тип свойства.</typeparam>
+            <param name="field">Ссылка на поле свойства.</param>
+            <param name="value">Новое значение для установки.</param>
+            <param name="propertyName">Имя свойства, по умолчанию передаётся автоматически.</param>
+            <returns>True, если значение изменилось и было установлено; иначе – false.</returns>
+        </member>
+        <member name="M:StudentRatingSystemApp.Commands.ViewModelBase.OnPropertyChanged(System.String)">
+            <summary>
+            Вызывает событие <see cref="E:StudentRatingSystemApp.Commands.ViewModelBase.PropertyChanged"/>, уведомляя о том, что указанное свойство изменилось.
+            </summary>
+            <param name="propertyName">Имя изменённого свойства.</param>
+        </member>
+        <member name="M:StudentRatingSystemApp.Commands.ViewModelBase.OpenWindow(System.Windows.Window)">
+            <summary>
+            Открывает новое окно, закрывая текущее главное окно приложения.
+            </summary>
+            <param name="window">Окно, которое нужно открыть.</param>
+            <returns>Открытое окно.</returns>
+        </member>
+        <member name="M:StudentRatingSystemApp.Commands.ViewModelBase.OpenWindowDialog(System.Windows.Window)">
+            <summary>
+            Открывает модальное диалоговое окно с эффектом размытия основного окна.
+            </summary>
+            <param name="window">Диалоговое окно для отображения.</param>
+            <returns>Открытое окно.</returns>
+        </member>
+        <member name="M:StudentRatingSystemApp.Commands.ViewModelBase.AppClose">
+            <summary>
+            Завершает работу приложения.
+            </summary>
+        </member>
+        <member name="T:StudentRatingSystemApp.ViewModels.GradeEditorViewModel">
+            <summary>
+            Модель представления для редактирования оценки (Grade).
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.ViewModels.GradeEditorViewModel.#ctor(StudentRatingSystemLib.Entities.User,StudentRatingSystemLib.Entities.Grade,StudentRatingSystemDbContext.Services.GradeService,System.Collections.Generic.List{StudentRatingSystemLib.Entities.Quest})">
+            <summary>
+            Конструктор класса GradeEditorViewModel.
+            Инициализирует модель данными пользователя, оценки, сервиса оценок и списка квестов.
+            </summary>
+            <param name="user">Пользователь, связанный с оценкой.</param>
+            <param name="grade">Редактируемая оценка (может быть null для создания новой).</param>
+            <param name="gradeService">Сервис для работы с оценками.</param>
+            <param name="quests">Список квестов.</param>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.GradeEditorViewModel.Grade">
+            <summary>
+            Свойство модели оценок.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.GradeEditorViewModel.ReceivedPoint">
+            <summary>
+            Полученные очки за выполнение задания.
+            Не может быть отрицательным или равным нулю.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.GradeEditorViewModel.ExtraPoint">
+            <summary>
+            Дополнительные очки за выполнение задания.
+            Не могут быть отрицательными или равными нулю.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.GradeEditorViewModel.DateOfAssessment">
+            <summary>
+            Дата сдачи задания в виде строки.
+            Не может быть пустой или null.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.GradeEditorViewModel.SelectedQuest">
+            <summary>
+            Выбранный квест (задание).
+            Не может быть null.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.GradeEditorViewModel.Quests">
+            <summary>
+            Список доступных квестов.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.GradeEditorViewModel.SaveCommand">
+            <summary>
+            Команда сохранения оценки.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.GradeEditorViewModel.CloseCommand">
+            <summary>
+            Команда закрытия окна или приложения.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.ViewModels.GradeEditorViewModel.ValidateData">
+            <summary>
+            Проверяет корректность введённых данных перед сохранением.
+            Проверяет все поля на пустоту и отрицательные значения.
+            В случае ошибки выводит соответствующие сообщения.
+            </summary>
+            <returns>True, если данные валидны, иначе false.</returns>
+        </member>
+        <member name="T:StudentRatingSystemApp.ViewModels.MenuWindowModel">
+            <summary>
+            Модель представления для основного меню приложения.
+            Обеспечивает взаимодействие с данными пользователей, оценок, заданий, студентов, предметов и преподавателей.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.ViewModels.MenuWindowModel.#ctor(StudentRatingSystemLib.Entities.User,StudentRatingSystemDbContext.Services.GradeService,StudentRatingSystemDbContext.Services.QuestService,StudentRatingSystemDbContext.Services.StudentService,StudentRatingSystemDbContext.Services.SubjectService,StudentRatingSystemDbContext.Services.TeacherService)">
+            <summary>
+            Конструктор класса MenuWindowModel.
+            Инициализирует сервисы, текущего пользователя и загружает начальные данные.
+            Также инициализирует команды для работы с оценками.
+            </summary>
+            <param name="user">Текущий пользователь приложения.</param>
+            <param name="gradeService">Сервис для работы с оценками.</param>
+            <param name="questService">Сервис для работы с заданиями (квестами).</param>
+            <param name="studentService">Сервис для работы со студентами.</param>
+            <param name="subjectService">Сервис для работы с предметами.</param>
+            <param name="teacherService">Сервис для работы с преподавателями.</param>
+        </member>
+        <member name="M:StudentRatingSystemApp.ViewModels.MenuWindowModel.UpdateLists">
+            <summary>
+            Обновляет списки сущностей, получая их из соответствующих сервисов и сортируя/преобразуя по необходимости.
+            Использует синхронные вызовы Result, что может блокировать UI.
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.ViewModels.MenuWindowModel.currentUser">
+            <summary>
+            Текущий пользователь системы.
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.ViewModels.MenuWindowModel._gradeService">
+            <summary>
+            Сервис для работы с оценками.
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.ViewModels.MenuWindowModel._questService">
+            <summary>
+            Сервис заданий (квестов).
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.ViewModels.MenuWindowModel._studentService">
+            <summary>
+            Сервис студентов.
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.ViewModels.MenuWindowModel._subjectService">
+            <summary>
+            Сервис предметов.
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.ViewModels.MenuWindowModel._teacherService">
+            <summary>
+            Сервис преподавателей.
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.ViewModels.MenuWindowModel.selectedGrade">
+            <summary>
+            Выбранная оценка.
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.ViewModels.MenuWindowModel.selectedQuest">
+            <summary>
+            Выбранное задание.
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.ViewModels.MenuWindowModel.selectedStudent">
+            <summary>
+            Выбранный студент.
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.ViewModels.MenuWindowModel.selectedSubject">
+            <summary>
+            Выбранная дисциплина.
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.ViewModels.MenuWindowModel.selectedTeacher">
+            <summary>
+            Выбранный преподаватель.
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.ViewModels.MenuWindowModel._grades">
+            <summary>
+            Список оценок.
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.ViewModels.MenuWindowModel._quests">
+            <summary>
+            Список заданий.
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.ViewModels.MenuWindowModel._students">
+            <summary>
+            Список студентов.
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.ViewModels.MenuWindowModel._subjects">
+            <summary>
+            Список предметов.
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.ViewModels.MenuWindowModel._teachers">
+            <summary>
+            Список преподавателей.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.MenuWindowModel.CurrentUser">
+            <summary>
+            Свойство текущего пользователя.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.MenuWindowModel.SelectedGrade">
+            <summary>
+            Свойство выбранной оценки.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.MenuWindowModel.SelectedQuest">
+            <summary>
+            Свойство выбранного задания (квеста).
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.MenuWindowModel.SelectedStudent">
+            <summary>
+            Свойство выбранного студента.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.MenuWindowModel.SelectedSubject">
+            <summary>
+            Свойство выбранного предмета.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.MenuWindowModel.SelectedTeacher">
+            <summary>
+            Свойство выбранного преподавателя.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.MenuWindowModel.Grades">
+            <summary>
+            Свойство списка оценок.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.MenuWindowModel.Quests">
+            <summary>
+            Свойство списка заданий.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.MenuWindowModel.Students">
+            <summary>
+            Свойство списка студентов.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.MenuWindowModel.Subjects">
+            <summary>
+            Свойство списка предметов.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.MenuWindowModel.Teachers">
+            <summary>
+            Свойство списка преподавателей.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.MenuWindowModel.GAddCommand">
+            <summary>
+            Команды для работы с оценками.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.MenuWindowModel.QAddCommand">
+            <summary>
+            Команды для работы с заданиями (квестами).
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.MenuWindowModel.RAddCommand">
+            <summary>
+            Команды для работы с результатами (видимо, оценки или итоговые баллы).
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.MenuWindowModel.StAddCommand">
+            <summary>
+            Команды для работы с студентами.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.MenuWindowModel.SuAddCommand">
+            <summary>
+            Команды для работы с предметами.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.MenuWindowModel.TAddCommand">
+            <summary>
+            Команды для работы с преподавателями.
+            </summary>
+        </member>
+        <member name="T:StudentRatingSystemApp.ViewModels.QuestEditorViewModel">
+            <summary>
+            ViewModel для редактора заданий.  Позволяет создавать и редактировать задания для студентов.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.ViewModels.QuestEditorViewModel.#ctor(StudentRatingSystemLib.Entities.User,StudentRatingSystemLib.Entities.Quest,StudentRatingSystemDbContext.Services.QuestService,System.Collections.Generic.List{StudentRatingSystemLib.Entities.Student})">
+            <summary>
+            Конструктор класса <see cref="T:StudentRatingSystemApp.ViewModels.QuestEditorViewModel"/>.
+            </summary>
+            <param name="user">Пользователь, осуществляющий редактирование.</param>
+            <param name="quest">Редактируемое задание. Если <c>null</c>, создается новое задание.</param>
+            <param name="questService">Сервис для работы с заданиями.</param>
+            <param name="students">Список студентов для выбора.</param>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.QuestEditorViewModel.Quest">
+            <summary>
+            Получает или задает редактируемое задание.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.QuestEditorViewModel.TypeOfTask">
+            <summary>
+            Получает или задает тип задания.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.QuestEditorViewModel.DateOfCompletion">
+            <summary>
+            Получает или задает дату выполнения задания.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.QuestEditorViewModel.NumberOfPoints">
+            <summary>
+            Получает или задает количество баллов за задание.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.QuestEditorViewModel.SelectedStudent">
+            <summary>
+            Получает или задает выбранного студента для задания.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.QuestEditorViewModel.Students">
+            <summary>
+            Получает или задает список студентов.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.QuestEditorViewModel.SaveCommand">
+            <summary>
+            Команда сохранения задания.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.QuestEditorViewModel.CloseCommand">
+            <summary>
+            Команда закрытия редактора заданий.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.ViewModels.QuestEditorViewModel.ValidateData">
+            <summary>
+            Валидирует данные, введенные пользователем.
+            </summary>
+            <returns><c>true</c>, если данные валидны, иначе <c>false</c>.</returns>
+        </member>
+        <member name="T:StudentRatingSystemApp.ViewModels.RegistrationWindowModel">
+            <summary>
+            Модель окна регистрации пользователя.
+            Управляет процессом входа, регистрации и закрытия окна.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.ViewModels.RegistrationWindowModel.#ctor">
+            <summary>
+            Инициализирует новый экземпляр <see cref="T:StudentRatingSystemApp.ViewModels.RegistrationWindowModel"/>.
+            Настраивает команды для входа, регистрации и закрытия окна.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.RegistrationWindowModel.Firstname">
+            <summary>
+            Имя пользователя.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.RegistrationWindowModel.Lastname">
+            <summary>
+            Фамилия пользователя.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.RegistrationWindowModel.Middlename">
+            <summary>
+            Отчество пользователя.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.RegistrationWindowModel.Login">
+            <summary>
+            Логин пользователя.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.RegistrationWindowModel.Password">
+            <summary>
+            Пароль пользователя.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.RegistrationWindowModel.LoginCommand">
+            <summary>
+            Команда для входа пользователя.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.RegistrationWindowModel.RegisterCommand">
+            <summary>
+            Команда для регистрации нового пользователя.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.RegistrationWindowModel.CloseCommand">
+            <summary>
+            Команда для закрытия окна регистрации.
+            </summary>
+        </member>
+        <member name="T:StudentRatingSystemApp.ViewModels.StudentEditorViewModel">
+            <summary>
+            Модель представления для редактора студента.
+            Управляет данными студента и командами для сохранения и закрытия.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.ViewModels.StudentEditorViewModel.#ctor(StudentRatingSystemLib.Entities.User,StudentRatingSystemLib.Entities.Student,StudentRatingSystemDbContext.Services.StudentService,System.Collections.Generic.List{StudentRatingSystemLib.Entities.Subject})">
+            <summary>
+            Конструктор модели, инициализация данных и команд.
+            </summary>
+            <param name="user">Текущий пользователь (используется, при необходимости).</param>
+            <param name="student">Объект студента для редактирования. Может быть null для добавления нового.</param>
+            <param name="studentService">Сервис для операций с студентами.</param>
+            <param name="subjects">Список дисциплин для выбора.</param>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.StudentEditorViewModel.Student">
+            <summary>
+            Объект студента для редактирования.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.StudentEditorViewModel.FIO">
+            <summary>
+            Поле "ФИО" студента.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.StudentEditorViewModel.Group">
+            <summary>
+            Поле "Группа".
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.StudentEditorViewModel.Contact">
+            <summary>
+            Контактные данные студента.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:StudentRatingSystemApp.ViewModels.StudentEditorViewModel.SelectedSubject" -->
+        <member name="P:StudentRatingSystemApp.ViewModels.StudentEditorViewModel.Subjects">
+            <summary>
+            Список доступных дисциплин.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.StudentEditorViewModel.SaveCommand">
+            <summary>
+            Команда для сохранения изменений студента.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.StudentEditorViewModel.CloseCommand">
+            <summary>
+            Команда для закрытия окна.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.ViewModels.StudentEditorViewModel.ValidateData">
+            <summary>
+            Проверяет корректность данных перед сохранением.
+            </summary>
+            <returns>Истина, если все проверки прошли успешно; иначе — ложь.</returns>
+        </member>
+        <member name="T:StudentRatingSystemApp.ViewModels.SubjectEditorViewModel">
+            <summary>
+            Модель представления для редактора предмета (дисциплины).
+            Управляет данными предмета и командами для сохранения и закрытия.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.ViewModels.SubjectEditorViewModel.#ctor(StudentRatingSystemLib.Entities.User,StudentRatingSystemLib.Entities.Subject,StudentRatingSystemDbContext.Services.SubjectService,System.Collections.Generic.List{StudentRatingSystemLib.Entities.Teacher})">
+            <summary>
+            Конструктор модели, инициализация данных и команд.
+            </summary>
+            <param name="user">Текущий пользователь (не используется, при необходимости).</param>
+            <param name="subject">Объект предмета для редактирования. Может быть null для добавления нового.</param>
+            <param name="subjectService">Сервис для операций с предметами.</param>
+            <param name="teachers">Список преподавателей для выбора.</param>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.SubjectEditorViewModel.Subject">
+            <summary>
+            Объект предмета для редактирования.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.SubjectEditorViewModel.SubjectName">
+            <summary>
+            Название дисциплины.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.SubjectEditorViewModel.SelectedTeacher">
+            <summary>
+            Выбранный преподаватель.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.SubjectEditorViewModel.Teachers">
+            <summary>
+            Список преподавателей для выбора.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.SubjectEditorViewModel.SaveCommand">
+            <summary>
+            Команда для сохранения изменений.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.SubjectEditorViewModel.CloseCommand">
+            <summary>
+            Команда для закрытия окна.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.ViewModels.SubjectEditorViewModel.ValidateData">
+            <summary>
+            Проверка корректности данных перед сохранением.
+            </summary>
+            <returns>Истина, если все проверки прошли успешно; иначе — ложь.</returns>
+        </member>
+        <member name="T:StudentRatingSystemApp.ViewModels.TeacherEditorViewModel">
+            <summary>
+            Модель представления для редактора преподавателя.
+            Управляет данными преподавателя и командами для сохранения и закрытия.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.ViewModels.TeacherEditorViewModel.#ctor(StudentRatingSystemLib.Entities.User,StudentRatingSystemLib.Entities.Teacher,StudentRatingSystemDbContext.Services.TeacherService)">
+            <summary>
+            Конструктор модели, инициализация данных и команд.
+            </summary>
+            <param name="user">Текущий пользователь (при необходимости).</param>
+            <param name="teacher">Объект преподавателя для редактирования, может быть null для добавления нового.</param>
+            <param name="teacherService">Сервис для операций с преподавателями.</param>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.TeacherEditorViewModel.Teacher">
+            <summary>
+            Редактируемый преподаватель.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.TeacherEditorViewModel.FIO">
+            <summary>
+            ФИО преподавателя.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.TeacherEditorViewModel.Contact">
+            <summary>
+            Контактные данные преподавателя.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.TeacherEditorViewModel.SaveCommand">
+            <summary>
+            Команда сохранения преподавателя.
+            </summary>
+        </member>
+        <member name="P:StudentRatingSystemApp.ViewModels.TeacherEditorViewModel.CloseCommand">
+            <summary>
+            Команда закрытия окна.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.ViewModels.TeacherEditorViewModel.ValidateData">
+            <summary>
+            Проверяет корректность введённых данных.
+            </summary>
+            <returns>True, если данные валидны; иначе false.</returns>
+        </member>
+        <member name="T:StudentRatingSystemApp.VIews.GradeEditorView">
+            <summary>
+            Логика взаимодействия для GradeEditorView.xaml
+            Представляет окно редактора оценок. 
+            </summary>
+            <summary>
+            GradeEditorView
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.VIews.GradeEditorView.viewModel">
+            <summary>
+            Объект модели представления для редактора оценки.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.VIews.GradeEditorView.#ctor(StudentRatingSystemLib.Entities.User,StudentRatingSystemLib.Entities.Grade,System.Collections.Generic.List{StudentRatingSystemLib.Entities.Quest})">
+            <summary>
+            Конструктор окна редактора оценки.
+            Инициализирует компоненты и устанавливает контекст данных.
+            </summary>
+            <param name="user">Пользователь, связанный с текущим действием.</param>
+            <param name="grade">Объект оценки для редактирования. Может быть null для добавления новой оценки.</param>
+            <param name="quests">Список вопросов, связанных с оценкой. Может быть null.</param>
+        </member>
+        <member name="M:StudentRatingSystemApp.VIews.GradeEditorView.CloseButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Обработчик нажатия кнопки для закрытия окна.
+            </summary>
+            <param name="sender">Объект-отправитель события.</param>
+            <param name="e">Аргументы события.</param>
+        </member>
+        <member name="M:StudentRatingSystemApp.VIews.GradeEditorView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:StudentRatingSystemApp.VIews.QuestEditorView">
+            <summary>
+            Логика взаимодействия для QuestEditorView.xaml
+            Представляет окно редактора заданий.
+            </summary>
+            <summary>
+            QuestEditorView
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.VIews.QuestEditorView.viewModel">
+            <summary>
+            Модель представления для редактора квеста.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.VIews.QuestEditorView.#ctor(StudentRatingSystemLib.Entities.User,StudentRatingSystemLib.Entities.Quest,System.Collections.Generic.List{StudentRatingSystemLib.Entities.Student})">
+            <summary>
+            Конструктор окна редактора квеста.
+            Инициализирует модель представления и привязывает её к контексту данных.
+            </summary>
+            <param name="user">Пользователь, оформляющий задание.</param>
+            <param name="quest">Объект задания для редактирования; может быть null для создания нового.</param>
+            <param name="students">Список студентов, используемый для выбора в редакторе; может быть null.</param>
+        </member>
+        <member name="M:StudentRatingSystemApp.VIews.QuestEditorView.CloseButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Обработчик события нажатия кнопки закрытия окна.
+            Закрывает окно.
+            </summary>
+            <param name="sender">Объект, отправивший событие.</param>
+            <param name="e">Аргументы события.</param>
+        </member>
+        <member name="M:StudentRatingSystemApp.VIews.QuestEditorView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:StudentRatingSystemApp.VIews.RegistrationWindow">
+            <summary>
+            Логика взаимодействия для RegistrationWindow.xaml
+            Представляет окно регистрации пользователя.
+            </summary>
+            <summary>
+            RegistrationWindow
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.VIews.RegistrationWindow._viewModel">
+            <summary>
+            Модель представления для окна регистрации.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.VIews.RegistrationWindow.#ctor">
+            <summary>
+            Конструктор окна регистрации.
+            Инициализирует модель представления и задаёт контекст данных.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.VIews.RegistrationWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:StudentRatingSystemApp.VIews.StudentEditorView">
+            <summary>
+            Логика взаимодействия для StudentEditorView.xaml
+            Представляет окно редактирования данных студента.
+            </summary>
+            <summary>
+            StudentEditorView
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.VIews.StudentEditorView.viewModel">
+            <summary>
+            Модель представления для редактора студента.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.VIews.StudentEditorView.#ctor(StudentRatingSystemLib.Entities.User,StudentRatingSystemLib.Entities.Student,System.Collections.Generic.List{StudentRatingSystemLib.Entities.Subject})">
+            <summary>
+            Конструктор окна редактора студента.
+            Инициализирует компоненты, модель представления и контекст данных.
+            </summary>
+            <param name="user">Пользователь, выполняющий редактирование.</param>
+            <param name="student">Объект студента для редактирования, может быть null.</param>
+            <param name="subjects">Список предметов, используемый для выбора у студента, может быть null.</param>
+        </member>
+        <member name="M:StudentRatingSystemApp.VIews.StudentEditorView.CloseButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Обработчик нажатия кнопки закрытия окна.
+            Закрывает окно.
+            </summary>
+            <param name="sender">Объект, отправивший событие.</param>
+            <param name="e">Аргументы события.</param>
+        </member>
+        <member name="M:StudentRatingSystemApp.VIews.StudentEditorView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:StudentRatingSystemApp.VIews.SubjectEditorView">
+            <summary>
+            Логика взаимодействия для SubjectEditorView.xaml
+            Представляет окно редактирования данных дисциплины.
+            </summary>
+            <summary>
+            SubjectEditorView
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.VIews.SubjectEditorView.viewModel">
+            <summary>
+            Модель представления для редактора предмета.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.VIews.SubjectEditorView.#ctor(StudentRatingSystemLib.Entities.User,StudentRatingSystemLib.Entities.Subject,System.Collections.Generic.List{StudentRatingSystemLib.Entities.Teacher})">
+            <summary>
+            Конструктор окна редактора предмета.
+            Инициализирует компоненты, модель представления и контекст данных.
+            </summary>
+            <param name="user">Пользователь, выполняющий редактирование.</param>
+            <param name="subject">Объект предмета для редактирования, может быть null.</param>
+            <param name="teachers">Список преподавателей, используемый для выбора у предмета, может быть null.</param>
+        </member>
+        <member name="M:StudentRatingSystemApp.VIews.SubjectEditorView.CloseButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Обработчик нажатия кнопки закрытия окна.
+            Закрывает окно.
+            </summary>
+            <param name="sender">Объект, отправивший событие.</param>
+            <param name="e">Аргументы события.</param>
+        </member>
+        <member name="M:StudentRatingSystemApp.VIews.SubjectEditorView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:StudentRatingSystemApp.VIews.TeacherEditorView">
+            <summary>
+            Логика взаимодействия для TeacherEditorView.xaml
+            Представляет окно редактирования данных преподавателя.
+            </summary>
+            <summary>
+            TeacherEditorView
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.VIews.TeacherEditorView.viewModel">
+            <summary>
+            Модель представления для редактора преподавателя.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.VIews.TeacherEditorView.#ctor(StudentRatingSystemLib.Entities.User,StudentRatingSystemLib.Entities.Teacher)">
+            <summary>
+            Конструктор окна редактора преподавателя.
+            Инициализирует компоненты, модель представления и контекст данных.
+            </summary>
+            <param name="user">Пользователь, выполняющий редактирование.</param>
+            <param name="teacher">Объект преподавателя для редактирования, может быть null.</param>
+        </member>
+        <member name="M:StudentRatingSystemApp.VIews.TeacherEditorView.CloseButton_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Обработчик нажатия кнопки закрытия окна.
+            Закрывает окно.
+            </summary>
+            <param name="sender">Объект, отправивший событие.</param>
+            <param name="e">Аргументы события.</param>
+        </member>
+        <member name="M:StudentRatingSystemApp.VIews.TeacherEditorView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:StudentRatingSystemApp.MenuWindow">
+            <summary>
+            Логика взаимодействия для MenuWindow.xaml
+            Представляет главное окно меню приложения.
+            </summary>
+            <summary>
+            MenuWindow
+            </summary>
+        </member>
+        <member name="F:StudentRatingSystemApp.MenuWindow.viewModel">
+            <summary>
+            Модель представления для окна меню.
+            </summary>
+        </member>
+        <member name="M:StudentRatingSystemApp.MenuWindow.#ctor(StudentRatingSystemLib.Entities.User)">
+            <summary>
+            Конструктор окна меню.
+            Инициализирует сервисы и устанавливает модель представления и контекст данных.
+            </summary>
+            <param name="user">Пользователь, вошедший в систему.</param>
+        </member>
+        <member name="M:StudentRatingSystemApp.MenuWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>
