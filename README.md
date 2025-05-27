@@ -1,4 +1,4 @@
-# Модуль системы рейтинга студентов
+# Модуль мотивационной системы рейтинга студентов
 Модуль, предназначенный для удобного заполнения и просмотра рейтинга студентов. \
 \
 ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white)
@@ -18,7 +18,7 @@
 - [Инструкция](#инструкция)
   
 ## Введение
-Программный модуль создан для удобной регистрации и изменений данных кадров детского сада.
+Программный модуль создан для удобной регистрации и изменений данных мотивационной системы рейтинга студентов.
 
 ## Установка
 Для установки в **`Bash`** или **`Power Shell`** введите эту команду:
@@ -33,19 +33,19 @@ https://github.com/Amischetoti/StudentRatingSystem.git
 * [Microsoft.EntityFrameworkCore.Sqlite](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Sqlite/10.0.0-preview.2.25163.8)
 
 ## Базы данных
-В проекте есть возможность использовать такие варианты БД как MS Sql Server и Sqlite.
+В проекте есть возможность использовать такой вариант БД как MS Sql Server.
 
 ## XML Докумеентация
 Ссылка на XML документацию:
-[StudentRatingSystemApp](https://github.com/QuanYizhenpls/Kindergarten/blob/main/KinderApp.xml),
-[StudentRatingSystemLib](https://github.com/QuanYizhenpls/Kindergarten/blob/main/KinderData.xml),
-[StudentRatingSystemDbContext](https://github.com/QuanYizhenpls/Kindergarten/blob/main/KinderDbContext.xml).
+[StudentRatingSystemApp](https://github.com/Amischetoti/StudentRatingSystem/blob/main/StudentRatingSystemApp.xml),
+[StudentRatingSystemLib](https://github.com/Amischetoti/StudentRatingSystem/blob/main/StudentRatingSystemLib.xml),
+[StudentRatingSystemDbContext](https://github.com/Amischetoti/StudentRatingSystem/blob/main/StudentRatingSystemDbContext.xml).
 
 ## Диаграммы сущностей
-![Диаграмма переходов состояний](https://github.com/QuanYizhenpls/Kindergarten/blob/main/Диаграмма%20переходов%20состояний.drawio)
-![Диаграмма сущность-связь](https://github.com/QuanYizhenpls/Kindergarten/blob/main/Диаграмма%20сущность-связь.drawio)
-![Диаграмма потоков данных](https://github.com/QuanYizhenpls/Kindergarten/blob/main/Диаграмма%20потоков%20данных.drawio)
-![Функциональная диаграмма](https://github.com/QuanYizhenpls/Kindergarten/blob/main/Функциональная%20диаграмма.drawio)
+![Диаграмма переходов состояний](https://github.com/Amischetoti/StudentRatingSystem/blob/main/%D0%94%D0%B8%D0%B0%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0%20%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D0%BE%D0%B2%20%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B9.png)
+![Диаграмма сущность-связь](https://github.com/Amischetoti/StudentRatingSystem/blob/main/%D0%94%D0%B8%D0%B0%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0%20%D1%81%D1%83%D1%89%D0%BD%D0%BE%D1%81%D1%82%D1%8C-%D1%81%D0%B2%D1%8F%D0%B7%D1%8C.jpg)
+![Диаграмма потоков данных](https://github.com/Amischetoti/StudentRatingSystem/blob/main/%D0%94%D0%B8%D0%B0%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0%20%D0%BF%D0%BE%D1%82%D0%BE%D0%BA%D0%BE%D0%B2%20%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85.png)
+![Функциональная диаграмма](https://github.com/Amischetoti/StudentRatingSystem/blob/main/%D0%A4%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%D0%B4%D0%B8%D0%B0%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0.png)
 
 ## Инструкция
 Краткое руководство использования:
