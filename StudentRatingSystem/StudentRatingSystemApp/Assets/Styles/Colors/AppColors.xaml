@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+    <!--Цвета для текста-->
+    <SolidColorBrush x:Key="TextActiveColor" Color="#B53324"/>
+    <SolidColorBrush x:Key="TextPassiveColor" Color="#E5A657"/>
+    <SolidColorBrush x:Key="PrimaryColor" Color="#DFBC94"/>
+    <SolidColorBrush x:Key="AccentColor" Color="#F5E2CE"/>
+
+</ResourceDictionary>

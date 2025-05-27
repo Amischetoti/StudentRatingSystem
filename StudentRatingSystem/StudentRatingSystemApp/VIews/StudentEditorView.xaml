@@ -1,0 +1,42 @@
+﻿<Window x:Class="StudentRatingSystemApp.VIews.StudentEditorView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentRatingSystemApp.VIews"
+        mc:Ignorable="d"
+        Title="StudentEditorView" Height="370" Width="500"
+        ResizeMode="NoResize"
+        Icon="C:\Users\user\Desktop\StudentRatingSystemTest\StudentRatingSystemApp\Assets\Icons\StudIcon.ico">
+    <Grid>
+        <StackPanel Background="{StaticResource AccentColor}" HorizontalAlignment="Center" Width="500" Height="400">
+
+            <Label Content="ФИО"  HorizontalAlignment="Center" Foreground="{StaticResource TextActiveColor}"/>
+
+            <TextBox Text="{Binding FIO, UpdateSourceTrigger=PropertyChanged}" Width="400" HorizontalAlignment="Center"/>
+
+            <Label Content="Группа"  HorizontalAlignment="Center" Foreground="{StaticResource TextActiveColor}"/>
+
+            <TextBox Text="{Binding Group, UpdateSourceTrigger=PropertyChanged}"  Width="300" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True" VerticalContentAlignment="Top" HorizontalAlignment="Center"/>
+
+            <Label Content="Контакты"  HorizontalAlignment="Center" Foreground="{StaticResource TextActiveColor}"/>
+
+            <TextBox Text="{Binding Contact, UpdateSourceTrigger=PropertyChanged}"  Width="300" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True" VerticalContentAlignment="Top" HorizontalAlignment="Center"/>
+
+
+            <Label Content="Дисциплина" HorizontalAlignment="Center" Foreground="{StaticResource TextActiveColor}"/>
+            <ComboBox ItemsSource="{Binding Subjects, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Center"
+SelectedItem="{Binding SelectedSubject}"
+        Width="200"
+        Margin="5"
+        Tag="Groups"
+        VerticalContentAlignment="Top"/>
+
+            <Button Content="Сохранить" Command="{Binding SaveCommand}"
+      Width="140" Margin="0,20,0,10" HorizontalAlignment="Center"/>
+            <Button Content="Закрыть" Width="100" 
+      x:Name="CloseButton" Click="CloseButton_Click"
+       HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Window>
