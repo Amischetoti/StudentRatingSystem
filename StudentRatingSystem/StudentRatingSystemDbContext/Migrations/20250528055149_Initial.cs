@@ -12,6 +12,20 @@ namespace StudentRatingSystemDbContext.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Quests",
+                columns: table => new
+                {
+                    Quest_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TypeOfTask = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateOfCompletion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NumberOfPoints = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Quests", x => x.Quest_id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Teachers",
                 columns: table => new
                 {
@@ -81,27 +95,6 @@ namespace StudentRatingSystemDbContext.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Quests",
-                columns: table => new
-                {
-                    Quest_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TypeOfTask = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DateOfCompletion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NumberOfPoints = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    StudentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Quests", x => x.Quest_id);
-                    table.ForeignKey(
-                        name: "FK_Quests_Students_StudentId",
-                        column: x => x.StudentId,
-                        principalTable: "Students",
-                        principalColumn: "Student_id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Grades",
                 columns: table => new
                 {
@@ -110,6 +103,7 @@ namespace StudentRatingSystemDbContext.Migrations
                     ExtraPoint = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     DateOfAssessment = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     QuestId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    StudentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Position = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -121,6 +115,12 @@ namespace StudentRatingSystemDbContext.Migrations
                         principalTable: "Quests",
                         principalColumn: "Quest_id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Grades_Students_StudentId",
+                        column: x => x.StudentId,
+                        principalTable: "Students",
+                        principalColumn: "Student_id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -129,8 +129,8 @@ namespace StudentRatingSystemDbContext.Migrations
                 column: "QuestId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Quests_StudentId",
-                table: "Quests",
+                name: "IX_Grades_StudentId",
+                table: "Grades",
                 column: "StudentId");
 
             migrationBuilder.CreateIndex(

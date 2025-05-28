@@ -31,6 +31,14 @@ SelectedItem="{Binding SelectedQuest}"
         Tag="Groups"
         VerticalContentAlignment="Top"/>
 
+            <Label Content="Студент" HorizontalAlignment="Center" Foreground="{StaticResource TextActiveColor}"/>
+            <ComboBox ItemsSource="{Binding Students, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Center"
+SelectedItem="{Binding SelectedStudent}"
+        Width="200"
+        Margin="5"
+        Tag="Groups"
+        VerticalContentAlignment="Top"/>
+            
             <Button Content="Сохранить" Command="{Binding SaveCommand}"
       Width="140" Margin="0,20,0,10" HorizontalAlignment="Center"/>
             <Button Content="Закрыть" Width="100" 

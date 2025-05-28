@@ -98,11 +98,11 @@
                             <ListView FontSize="22" HorizontalAlignment ="Right" Height="375" Width="775" Margin="0,10,10,0" ItemsSource="{Binding Grades, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedGrade, UpdateSourceTrigger=PropertyChanged}" Foreground="{StaticResource TextActiveColor}">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="Студент" DisplayMemberBinding="{Binding Quest.Student.FIO}" Width="160"/>
+                                        <GridViewColumn Header="Студент" DisplayMemberBinding="{Binding Student.FIO}" Width="160"/>
                                         <GridViewColumn Header="Задание" DisplayMemberBinding="{Binding Quest.TypeOfTask}" Width="150"/>
                                         <GridViewColumn Header="Итоговый результат" DisplayMemberBinding="{Binding FinalScore}" Width="210"/>
                                         <GridViewColumn Header="Позиция" DisplayMemberBinding="{Binding Position}" Width="100"/>
-                                        <GridViewColumn Header="Дисциплина" DisplayMemberBinding="{Binding Quest.Student.Subject.SubjectName}" Width="150"/>
+                                        <GridViewColumn Header="Дисциплина" DisplayMemberBinding="{Binding Student.Subject.SubjectName}" Width="150"/>
                                     </GridView>
                                 </ListView.View>
                             </ListView>

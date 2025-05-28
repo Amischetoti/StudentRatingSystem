@@ -45,6 +45,16 @@ namespace StudentRatingSystemLib.Entities
         public Quest? Quest { get; set; }
 
         /// <summary>
+        /// Идентификатор студента (внешний ключ).
+        /// </summary>
+        public Guid StudentId { get; set; }
+
+        /// <summary>
+        /// Навигационное свойство к студенту.
+        /// </summary>
+        public Student? Student { get; set; }
+
+        /// <summary>
         /// Позиция (порядковый номер).
         /// </summary>
         public int Position { get; set; }
@@ -55,7 +65,7 @@ namespace StudentRatingSystemLib.Entities
         /// <returns>Строка с информацией о баллах.</returns>
         public override string ToString()
         {
-            return $"{ReceivedPoint}, {ExtraPoint} - {Quest}";
+            return $"{ReceivedPoint}, {ExtraPoint} - {Quest}. - {Student}";
         }
 
         /// <summary>

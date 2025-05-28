@@ -34,8 +34,7 @@ namespace StudentRatingSystemApp.VIews
         /// </summary>
         /// <param name="user">Пользователь, оформляющий задание.</param>
         /// <param name="quest">Объект задания для редактирования; может быть null для создания нового.</param>
-        /// <param name="students">Список студентов, используемый для выбора в редакторе; может быть null.</param>
-        public QuestEditorView(User user, Quest quest = null!, List<Student> students = null!)
+        public QuestEditorView(User user, Quest quest = null!)
         {
             InitializeComponent();
 
@@ -44,7 +43,7 @@ namespace StudentRatingSystemApp.VIews
             /// <summary>
             /// Инициализация модели представления с необходимыми параметрами.
             /// </summary>
-            viewModel = new(user, quest, new StudentRatingSystemDbContext.Services.QuestService(), students);
+            viewModel = new(user, quest, new StudentRatingSystemDbContext.Services.QuestService());
 
             /// <summary>
             /// Установка контекста данных для UI.

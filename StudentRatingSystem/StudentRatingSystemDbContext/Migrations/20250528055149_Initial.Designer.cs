@@ -12,7 +12,7 @@ using StudentRatingSystemDbContext.Connections;
 namespace StudentRatingSystemDbContext.Migrations
 {
     [DbContext(typeof(SQLServerDbContext))]
-    [Migration("20250527110037_Initial")]
+    [Migration("20250528055149_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -46,9 +46,14 @@ namespace StudentRatingSystemDbContext.Migrations
                     b.Property<decimal>("ReceivedPoint")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<Guid>("StudentId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Grade_id");
 
                     b.HasIndex("QuestId");
+
+                    b.HasIndex("StudentId");
 
                     b.ToTable("Grades");
                 });
@@ -65,15 +70,10 @@ namespace StudentRatingSystemDbContext.Migrations
                     b.Property<string>("NumberOfPoints")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("StudentId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("TypeOfTask")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Quest_id");
-
-                    b.HasIndex("StudentId");
 
                     b.ToTable("Quests");
                 });
@@ -177,16 +177,13 @@ namespace StudentRatingSystemDbContext.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Quest");
-                });
-
-            modelBuilder.Entity("StudentRatingSystemLib.Entities.Quest", b =>
-                {
                     b.HasOne("StudentRatingSystemLib.Entities.Student", "Student")
                         .WithMany()
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Quest");
 
                     b.Navigation("Student");
                 });

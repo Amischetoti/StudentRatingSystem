@@ -21,18 +21,15 @@ namespace StudentRatingSystemApp.ViewModels
            /// <param name="user">Пользователь, осуществляющий редактирование.</param>
            /// <param name="quest">Редактируемое задание. Если <c>null</c>, создается новое задание.</param>
            /// <param name="questService">Сервис для работы с заданиями.</param>
-           /// <param name="students">Список студентов для выбора.</param>
-        public QuestEditorViewModel(User user, Quest quest, QuestService questService, List<Student> students)
+        public QuestEditorViewModel(User user, Quest quest, QuestService questService)
         {
             Quest = quest;
             _questService = questService;
-            _students = students;
             if (quest != null)
             {
                 TypeOfTask = quest.TypeOfTask;
                 DateOfCompletion = quest.DateOfCompletion;
                 NumberOfPoints = quest.NumberOfPoints;
-                SelectedStudent = quest.Student;
             }
 
             SaveCommand = new RelayCommand(o =>
@@ -40,13 +37,13 @@ namespace StudentRatingSystemApp.ViewModels
                 if (!ValidateData()) return;
                 if (quest == null)
                 {
-                    _questService.Add(new Quest() { Quest_id = Guid.NewGuid(), TypeOfTask = this.TypeOfTask, DateOfCompletion = this.DateOfCompletion, NumberOfPoints = this.NumberOfPoints, StudentId = Guid.NewGuid(), Student = this.SelectedStudent });
+                    _questService.Add(new Quest() { Quest_id = Guid.NewGuid(), TypeOfTask = this.TypeOfTask, DateOfCompletion = this.DateOfCompletion, NumberOfPoints = this.NumberOfPoints});
                     MessageBox.Show("Задание добавлено!");
                 }
                 else
                 {
 
-                    _questService.Update(quest, new Quest() { Quest_id = Guid.NewGuid(), TypeOfTask = this.TypeOfTask, DateOfCompletion = this.DateOfCompletion, NumberOfPoints = this.NumberOfPoints, StudentId = Guid.NewGuid(), Student = this.SelectedStudent });
+                    _questService.Update(quest, new Quest() {Quest_id = Guid.NewGuid(), TypeOfTask = this.TypeOfTask, DateOfCompletion = this.DateOfCompletion, NumberOfPoints = this.NumberOfPoints});
                     MessageBox.Show("Задание изменено!");
                 }
             });
@@ -58,8 +55,6 @@ namespace StudentRatingSystemApp.ViewModels
         private string typeOfTask = string.Empty;
         private string dateOfCompletion = string.Empty;
         private string numberOfPoints = string.Empty;
-        private Student selectedStudent;
-        private List<Student> _students;
         private QuestService _questService;
 
         private Quest quest;
@@ -106,27 +101,6 @@ namespace StudentRatingSystemApp.ViewModels
         }
 
         /// <summary>
-        /// Получает или задает выбранного студента для задания.
-        /// </summary>
-        public Student SelectedStudent
-        {
-            get => selectedStudent; set
-            {
-                if (value == null)
-                {
-                    MessageBox.Show("Необходимо выбрать студента.");
-                    return;
-                }
-                Set(ref selectedStudent, value, nameof(selectedStudent));
-            }
-        }
-
-        /// <summary>
-        /// Получает или задает список студентов.
-        /// </summary>
-        public List<Student> Students { get => _students; set => Set(ref _students, value, nameof(_students)); }
-
-        /// <summary>
         /// Команда сохранения задания.
         /// </summary>
         public RelayCommand SaveCommand { get; }
@@ -150,11 +124,6 @@ namespace StudentRatingSystemApp.ViewModels
             if (string.IsNullOrEmpty(NumberOfPoints))
             {
                 MessageBox.Show("Поле 'Критерии оценивания' не может быть пустым.");
-                return false;
-            }
-            if (SelectedStudent == null)
-            {
-                MessageBox.Show("Необходимо выбрать студента.");
                 return false;
             }
             return true;

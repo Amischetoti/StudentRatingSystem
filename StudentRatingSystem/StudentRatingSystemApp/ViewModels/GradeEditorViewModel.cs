@@ -27,18 +27,20 @@ namespace StudentRatingSystemApp.ViewModels
         /// <param name="grade">Редактируемая оценка (может быть null для создания новой).</param>
         /// <param name="gradeService">Сервис для работы с оценками.</param>
         /// <param name="quests">Список квестов.</param>
-        public GradeEditorViewModel(User user, Grade grade, GradeService gradeService, List<Quest> quests)
+        /// <param name="students">Список студентов.</param>
+        public GradeEditorViewModel(User user, Grade grade, GradeService gradeService, List<Quest> quests, List<Student> students)
         {
             Grade = grade;
             _gradeService = gradeService;
             _quests = quests;
-
+            _students = students;
             if (grade != null)
             {
                 ReceivedPoint = grade.ReceivedPoint;
                 ExtraPoint = grade.ExtraPoint;
                 DateOfAssessment = grade.DateOfAssessment;
                 SelectedQuest = grade.Quest;
+                SelectedStudent = grade.Student;
             }
 
             /// <summary>
@@ -57,7 +59,9 @@ namespace StudentRatingSystemApp.ViewModels
                         ExtraPoint = this.ExtraPoint,
                         DateOfAssessment = this.DateOfAssessment,
                         QuestId = Guid.NewGuid(),
-                        Quest = this.SelectedQuest
+                        Quest = this.SelectedQuest,
+                        StudentId = Guid.NewGuid(),
+                        Student = this.SelectedStudent
                     };
                     _gradeService.Add(newGrade);
                     MessageBox.Show("Оценка добавлена");
@@ -71,7 +75,9 @@ namespace StudentRatingSystemApp.ViewModels
                         ExtraPoint = this.ExtraPoint,
                         DateOfAssessment = this.DateOfAssessment,
                         QuestId = Guid.NewGuid(),
-                        Quest = this.SelectedQuest
+                        Quest = this.SelectedQuest,
+                        StudentId = Guid.NewGuid(),
+                        Student = this.SelectedStudent
                     });
                     MessageBox.Show("Оценка изменена");
                 }
@@ -90,10 +96,11 @@ namespace StudentRatingSystemApp.ViewModels
         private decimal extraPoint;
         private string dateOfAssessment = string.Empty;
         private Quest selectedQuest;
+        private Student selectedStudent;
 
         private GradeService _gradeService;
         private List<Quest> _quests;
-
+        private List<Student> _students;
         private Grade grade;
 
         /// <summary>
@@ -189,6 +196,27 @@ namespace StudentRatingSystemApp.ViewModels
         public List<Quest> Quests { get => _quests; set => Set(ref _quests, value, nameof(_quests)); }
 
         /// <summary>
+        /// Получает или задает выбранного студента для задания.
+        /// </summary>
+        public Student SelectedStudent
+        {
+            get => selectedStudent; set
+            {
+                if (value == null)
+                {
+                    MessageBox.Show("Необходимо выбрать студента.");
+                    return;
+                }
+                Set(ref selectedStudent, value, nameof(selectedStudent));
+            }
+        }
+
+        /// <summary>
+        /// Получает или задает список студентов.
+        /// </summary>
+        public List<Student> Students { get => _students; set => Set(ref _students, value, nameof(_students)); }
+
+        /// <summary>
         /// Команда сохранения оценки.
         /// </summary>
         public RelayCommand SaveCommand { get; }
@@ -239,6 +267,11 @@ namespace StudentRatingSystemApp.ViewModels
             if (SelectedQuest == null)
             {
                 MessageBox.Show("Необходимо выбрать задание.");
+                return false;
+            }
+            if (SelectedStudent == null)
+            {
+                MessageBox.Show("Необходимо выбрать студента.");
                 return false;
             }
             return true;

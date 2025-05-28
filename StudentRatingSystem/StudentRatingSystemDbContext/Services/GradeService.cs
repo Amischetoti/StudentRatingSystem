@@ -70,6 +70,7 @@ namespace StudentRatingSystemDbContext.Services
             entity.ExtraPoint = newEntity.ExtraPoint;
             entity.DateOfAssessment = newEntity.DateOfAssessment;
             entity.Quest = newEntity.Quest;
+            entity.Student = newEntity.Student;
 
             var success = await SaveChangesAsync();
 

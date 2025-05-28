@@ -49,7 +49,7 @@ namespace StudentRatingSystemApp.ViewModels
             /// </summary>
             GAddCommand = new AsyncRelayCommand(async () =>
             {
-                var gradeEditorView = new GradeEditorView(CurrentUser, quests: Quests);
+                var gradeEditorView = new GradeEditorView(CurrentUser, quests: Quests, students: Students);
                 gradeEditorView.ShowDialog();
 
                 // Получаем выбранный квест из ViewModel GradeEditorView
@@ -79,7 +79,7 @@ namespace StudentRatingSystemApp.ViewModels
                     /// <summary>
                     /// Создание и отображение окна редактора оценки для выбранной оценки.
                     /// </summary>
-                    var gradeEditorView = new GradeEditorView(CurrentUser, SelectedGrade, quests: Quests);
+                    var gradeEditorView = new GradeEditorView(CurrentUser, SelectedGrade, quests: Quests, students: Students);
                     gradeEditorView.ShowDialog();
 
                     /// <summary>
@@ -133,7 +133,7 @@ namespace StudentRatingSystemApp.ViewModels
 QAddCommand = new RelayCommand(o =>
 {
     // Открывает окно редактора для создания нового задания, передавая текущего пользователя и список студентов.
-    OpenWindowDialog(new QuestEditorView(CurrentUser, students: Students));
+    OpenWindowDialog(new QuestEditorView(CurrentUser));
     // Обновляет все списки после добавления.
     UpdateLists();
 });
@@ -151,7 +151,7 @@ QUpdateCommand = new RelayCommand(o =>
         try
         {
             // Открывает окно редактора с выбранным заданием для редактирования.
-            OpenWindowDialog(new QuestEditorView(CurrentUser, SelectedQuest, students: Students));
+            OpenWindowDialog(new QuestEditorView(CurrentUser, SelectedQuest));
             // Обновляет списки после редактирования.
             UpdateLists();
         }
@@ -583,7 +583,7 @@ QRemoveCommand = new RelayCommand(o =>
         public RelayCommand QRemoveCommand { get; }
 
         /// <summary>
-        /// Команды для работы с результатами (видимо, оценки или итоговые баллы).
+        /// Команды для работы с результатами (оценки или итоговые баллы).
         /// </summary>
         public RelayCommand RAddCommand { get; }
         public RelayCommand RUpdateCommand { get; }

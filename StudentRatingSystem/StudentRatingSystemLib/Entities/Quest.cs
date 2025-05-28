@@ -33,15 +33,6 @@ namespace StudentRatingSystemLib.Entities
         /// </summary>
         public string? NumberOfPoints { get; set; }
 
-        /// <summary>
-        /// Идентификатор студента (внешний ключ).
-        /// </summary>
-        public Guid StudentId { get; set; }
-
-        /// <summary>
-        /// Навигационное свойство к студенту.
-        /// </summary>
-        public Student? Student { get; set; }
 
         /// <summary>
         /// Возвращает строковое представление задания.
@@ -49,7 +40,7 @@ namespace StudentRatingSystemLib.Entities
         /// <returns>Строка с типом задания и количеством баллов.</returns>
         public override string ToString()
         {
-            return $"{TypeOfTask}, {NumberOfPoints} - {Student}";
+            return $"{TypeOfTask}, {NumberOfPoints}";
         }
     }
 }

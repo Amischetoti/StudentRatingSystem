@@ -61,7 +61,6 @@ namespace StudentRatingSystemDbContext.Services
             entity.TypeOfTask = newEntity.TypeOfTask;
             entity.DateOfCompletion = newEntity.DateOfCompletion;
             entity.NumberOfPoints = newEntity.NumberOfPoints;
-            entity.Student = newEntity.Student;
 
             await ctx.SaveChangesAsync();
             return (true);

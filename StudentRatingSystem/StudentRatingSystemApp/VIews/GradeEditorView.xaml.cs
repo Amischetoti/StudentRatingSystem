@@ -35,7 +35,8 @@ namespace StudentRatingSystemApp.VIews
         /// <param name="user">Пользователь, связанный с текущим действием.</param>
         /// <param name="grade">Объект оценки для редактирования. Может быть null для добавления новой оценки.</param>
         /// <param name="quests">Список вопросов, связанных с оценкой. Может быть null.</param>
-        public GradeEditorView(User user, Grade grade = null!, List<Quest> quests = null!)
+        /// <param name="students">Список студентов, связанных с оценкой. Может быть null.</param>
+        public GradeEditorView(User user, Grade grade = null!, List<Quest> quests = null!, List<Student> students = null!)
         {
             InitializeComponent();
             var gradeService = new StudentRatingSystemDbContext.Services.GradeService();
@@ -43,7 +44,7 @@ namespace StudentRatingSystemApp.VIews
             /// <summary>
             /// Инициализация модели представления с необходимыми данными.
             /// </summary>
-            viewModel = new(user, grade, gradeService, quests);
+            viewModel = new(user, grade, gradeService, quests, students);
 
             /// <summary>
             /// Установка контекста данных для связывания.

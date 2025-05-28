@@ -25,7 +25,7 @@ namespace StudentRatingSystemDbContext.Connections
         /// <summary>
         /// Строка подключения к базе данных SQL Server.
         /// </summary>
-        private const string _connectionString = "Server = (localdb)\\MSSQLLocalDB; Database = TestDB";
+        private const string _connectionString = "Server = (localdb)\\MSSQLLocalDB; Database = StudentRatingDB";
 
         /// <summary>
         /// Настраивает параметры подключения к базе данных.
