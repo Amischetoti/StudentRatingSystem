@@ -49,7 +49,7 @@ namespace StudentRatingSystemLib.Entities
         /// <returns>Строка с типом задания и количеством баллов.</returns>
         public override string ToString()
         {
-            return $"{TypeOfTask}, {NumberOfPoints}";
+            return $"{TypeOfTask}, {NumberOfPoints} - {Student}";
         }
     }
 }

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="StudentEditorView" Height="370" Width="500"
         ResizeMode="NoResize"
-        Icon="C:\Users\user\Desktop\StudentRatingSystemTest\StudentRatingSystemApp\Assets\Icons\StudIcon.ico">
+        Icon="C:\Users\user\Source\Repos\StudentRatingSystem\StudentRatingSystem\StudentRatingSystemApp\Assets\Icons\StudIcon.ico">
     <Grid>
         <StackPanel Background="{StaticResource AccentColor}" HorizontalAlignment="Center" Width="500" Height="400">
 

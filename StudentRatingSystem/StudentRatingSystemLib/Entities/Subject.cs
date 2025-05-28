@@ -39,7 +39,7 @@ namespace StudentRatingSystemLib.Entities
         /// <returns>Название предмета.</returns>
         public override string ToString()
         {
-            return $"{SubjectName}";
+            return $"{SubjectName} - {Teacher}";
         }
     }
 }

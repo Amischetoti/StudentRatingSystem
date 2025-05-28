@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MenuWindow" Height="450" Width="810"
         ResizeMode="NoResize"
-         Icon="C:\Users\user\Desktop\StudentRatingSystemTest\StudentRatingSystemApp\Assets\Icons\StudIcon.ico">
+         Icon="C:\Users\user\Source\Repos\StudentRatingSystem\StudentRatingSystem\StudentRatingSystemApp\Assets\Icons\StudIcon.ico">
     <Grid>
         <Border Background="Beige" Margin="0,0,0,0" Height="434" VerticalAlignment="Bottom">
 
@@ -31,7 +31,7 @@
                             <Button Content="Добавить" Command="{Binding TAddCommand}"/>
                             <Button Content="Обновить" Command="{Binding TUpdateCommand}"/>
                             <Button Content="Удалить" Command="{Binding TRemoveCommand}"/>
-                            <ListView FontSize="32" Foreground="{StaticResource TextActiveColor}" HorizontalAlignment ="Right" Height="375" Width="670" VerticalAlignment="Top" Margin="0,-110,10,0" ItemsSource="{Binding Teachers, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedTeacher, UpdateSourceTrigger=PropertyChanged}"/>
+                            <ListView FontSize="28" Foreground="{StaticResource TextActiveColor}" HorizontalAlignment ="Right" Height="375" Width="670" VerticalAlignment="Top" Margin="0,-110,10,0" ItemsSource="{Binding Teachers, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedTeacher, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>
                             
                     </TabItem>
@@ -42,7 +42,7 @@
                             <Button Content="Добавить" Command="{Binding SuAddCommand}"/>
                             <Button Content="Обновить" Command="{Binding SuUpdateCommand}"/>
                             <Button Content="Удалить" Command="{Binding SuRemoveCommand}"/>
-                            <ListView FontSize="32" Foreground="{StaticResource TextActiveColor}" HorizontalAlignment ="Right" Height="375" Width="670" VerticalAlignment="Top" Margin="0,-110,10,0" ItemsSource="{Binding Subjects, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedSubject, UpdateSourceTrigger=PropertyChanged}"/>
+                            <ListView FontSize="28" Foreground="{StaticResource TextActiveColor}" HorizontalAlignment ="Right" Height="375" Width="670" VerticalAlignment="Top" Margin="0,-110,10,0" ItemsSource="{Binding Subjects, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedSubject, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>
                     </TabItem>
 
@@ -54,12 +54,12 @@
                             <Button Content="Добавить" Command="{Binding StAddCommand}"/>
                             <Button Content="Обновить" Command="{Binding StUpdateCommand}"/>
                             <Button Content="Удалить" Command="{Binding StRemoveCommand}"/>
-                            <ListView FontSize="32" Foreground="{StaticResource TextActiveColor}" HorizontalAlignment ="Right" Height="375" Width="670" VerticalAlignment="Top" Margin="0,-110,10,0" ItemsSource="{Binding Students, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedStudent, UpdateSourceTrigger=PropertyChanged}"/>
+                            <ListView FontSize="28" Foreground="{StaticResource TextActiveColor}" HorizontalAlignment ="Right" Height="375" Width="670" VerticalAlignment="Top" Margin="0,-110,10,0" ItemsSource="{Binding Students, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedStudent, UpdateSourceTrigger=PropertyChanged}"/>
 
                         </StackPanel>
                     </TabItem>
 
-                    <TabItem Header="Задания" Background="{StaticResource TextPassiveColor}" Foreground="{StaticResource AccentColor}" Height="31" VerticalAlignment="Top">
+                    <TabItem Header="Задания" Background="{StaticResource TextPassiveColor}" Foreground="{StaticResource AccentColor}" Margin="0,0,0,0">
                         <StackPanel Background="{StaticResource AccentColor}" Width="795">
                             <StackPanel.Resources>
                                 <Style TargetType="Button">
@@ -74,7 +74,7 @@
                             <Button Content="Добавить" Command="{Binding QAddCommand}"/>
                             <Button Content="Обновить" Command="{Binding QUpdateCommand}"/>
                             <Button Content="Удалить" Command="{Binding QRemoveCommand}"/>
-                            <ListView FontSize="32" Foreground="{StaticResource TextActiveColor}" HorizontalAlignment ="Right" Height="375" Width="670" VerticalAlignment="Top" Margin="0,-110,10,0" ItemsSource="{Binding Quests, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedQuest, UpdateSourceTrigger=PropertyChanged}"/>
+                            <ListView FontSize="28" Foreground="{StaticResource TextActiveColor}" HorizontalAlignment ="Right" Height="375" Width="670" VerticalAlignment="Top" Margin="0,-110,10,0" ItemsSource="{Binding Quests, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedQuest, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>
                     </TabItem>
 
@@ -86,7 +86,7 @@
                             <Button Content="Добавить" Command="{Binding GAddCommand}"/>
                             <Button Content="Обновить" Command="{Binding GUpdateCommand}"/>
                             <Button Content="Удалить" Command="{Binding GRemoveCommand}"/>
-                            <ListView FontSize="32" Foreground="{StaticResource TextActiveColor}" HorizontalAlignment ="Right" Height="375" Width="670" VerticalAlignment="Top" Margin="0,-110,10,0" ItemsSource="{Binding Grades, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedGrade, UpdateSourceTrigger=PropertyChanged}"/>
+                            <ListView FontSize="28" Foreground="{StaticResource TextActiveColor}" HorizontalAlignment ="Right" Height="375" Width="670" VerticalAlignment="Top" Margin="0,-110,10,0" ItemsSource="{Binding Grades, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedGrade, UpdateSourceTrigger=PropertyChanged}"/>
 
                         </StackPanel>
                     </TabItem>

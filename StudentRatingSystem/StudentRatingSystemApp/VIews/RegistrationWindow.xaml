@@ -11,7 +11,7 @@ WindowStartupLocation="CenterScreen"
     AllowsTransparency="True"
     WindowStyle="None"
     ResizeMode="NoResize"
-    Icon="C:\Users\user\Desktop\StudentRatingSystemTest\StudentRatingSystemApp\Assets\Icons\StudIcon.ico">
+    Icon="C:\Users\user\Source\Repos\StudentRatingSystem\StudentRatingSystem\StudentRatingSystemApp\Assets\Icons\StudIcon.ico">
     <Border CornerRadius="5" Background="{StaticResource AccentColor}">
         <Grid>
             <TabControl HorizontalAlignment="Center"

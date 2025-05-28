@@ -49,7 +49,7 @@ namespace StudentRatingSystemLib.Entities
         /// <returns>ФИО студента.</returns>
         public override string ToString()
         {
-            return $"{FIO}";
+            return $"{FIO} - {Subject.SubjectName}";
         }
     }
 }

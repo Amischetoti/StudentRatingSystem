@@ -55,7 +55,7 @@ namespace StudentRatingSystemLib.Entities
         /// <returns>Строка с информацией о баллах.</returns>
         public override string ToString()
         {
-            return $"{ReceivedPoint}, {ExtraPoint}";
+            return $"{ReceivedPoint}, {ExtraPoint} - {Quest}";
         }
 
         /// <summary>
