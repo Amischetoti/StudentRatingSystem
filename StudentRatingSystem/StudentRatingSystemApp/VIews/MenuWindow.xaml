@@ -18,43 +18,62 @@
                             <Setter Property="Margin" Value="0,0,0,0"/>
                             <Setter Property="Padding" Value="10,5"/>
                             <Setter Property="FontSize" Value="14"/>
-
                         </Style>
                     </TabControl.Resources>
 
                     <TabItem Header="Преподаватели" Background="{StaticResource TextPassiveColor}" Foreground="{StaticResource AccentColor}">
-                       
+
                         <StackPanel Width="795" Background="{StaticResource AccentColor}">
                             <StackPanel.Resources>
-                                
+
                             </StackPanel.Resources>
                             <Button Content="Добавить" Command="{Binding TAddCommand}"/>
                             <Button Content="Обновить" Command="{Binding TUpdateCommand}"/>
                             <Button Content="Удалить" Command="{Binding TRemoveCommand}"/>
-                            <ListView FontSize="28" Foreground="{StaticResource TextActiveColor}" HorizontalAlignment ="Right" Height="375" Width="670" VerticalAlignment="Top" Margin="0,-110,10,0" ItemsSource="{Binding Teachers, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedTeacher, UpdateSourceTrigger=PropertyChanged}"/>
+                            <ListView FontSize="28" Foreground="{StaticResource TextActiveColor}" HorizontalAlignment ="Right" Height="340" Width="670" VerticalAlignment="Top" Margin="0,-110,10,0" ItemsSource="{Binding Teachers, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedTeacher, UpdateSourceTrigger=PropertyChanged}">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Преподаватель" DisplayMemberBinding="{Binding FIO}" Width="670"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
                         </StackPanel>
-                            
+
                     </TabItem>
 
                     <TabItem Header="Дисциплины" Background="{StaticResource TextPassiveColor}" Foreground="{StaticResource AccentColor}">
                         <StackPanel Background="{StaticResource AccentColor}" Width="795">
-                            
+
                             <Button Content="Добавить" Command="{Binding SuAddCommand}"/>
                             <Button Content="Обновить" Command="{Binding SuUpdateCommand}"/>
                             <Button Content="Удалить" Command="{Binding SuRemoveCommand}"/>
-                            <ListView FontSize="28" Foreground="{StaticResource TextActiveColor}" HorizontalAlignment ="Right" Height="375" Width="670" VerticalAlignment="Top" Margin="0,-110,10,0" ItemsSource="{Binding Subjects, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedSubject, UpdateSourceTrigger=PropertyChanged}"/>
+                            <ListView FontSize="28" Foreground="{StaticResource TextActiveColor}" HorizontalAlignment ="Right" Height="340" Width="670" Margin="0,-110,10,0" ItemsSource="{Binding Subjects, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedSubject, UpdateSourceTrigger=PropertyChanged}">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Дисциплина" DisplayMemberBinding="{Binding SubjectName}" Width="300"/>
+                                        <GridViewColumn Header="Преподаватель" DisplayMemberBinding="{Binding Teacher.FIO}" Width="400"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
                         </StackPanel>
                     </TabItem>
 
                     <TabItem Header="Студенты" Background="{StaticResource TextPassiveColor}" Foreground="{StaticResource AccentColor}">
                         <StackPanel Background="{StaticResource AccentColor}" Width="795">
                             <StackPanel.Resources>
-                                
+
                             </StackPanel.Resources>
                             <Button Content="Добавить" Command="{Binding StAddCommand}"/>
                             <Button Content="Обновить" Command="{Binding StUpdateCommand}"/>
                             <Button Content="Удалить" Command="{Binding StRemoveCommand}"/>
-                            <ListView FontSize="28" Foreground="{StaticResource TextActiveColor}" HorizontalAlignment ="Right" Height="375" Width="670" VerticalAlignment="Top" Margin="0,-110,10,0" ItemsSource="{Binding Students, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedStudent, UpdateSourceTrigger=PropertyChanged}"/>
+                            <ListView FontSize="28" Foreground="{StaticResource TextActiveColor}" HorizontalAlignment ="Right" Height="340" Width="670" Margin="0,-110,10,0" ItemsSource="{Binding Students, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedStudent, UpdateSourceTrigger=PropertyChanged}">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Студент" DisplayMemberBinding="{Binding FIO}" Width="400"/>
+                                        <GridViewColumn Header="Дисциплина" DisplayMemberBinding="{Binding Subject.SubjectName}" Width="270"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
 
                         </StackPanel>
                     </TabItem>
@@ -74,19 +93,37 @@
                             <Button Content="Добавить" Command="{Binding QAddCommand}"/>
                             <Button Content="Обновить" Command="{Binding QUpdateCommand}"/>
                             <Button Content="Удалить" Command="{Binding QRemoveCommand}"/>
-                            <ListView FontSize="28" Foreground="{StaticResource TextActiveColor}" HorizontalAlignment ="Right" Height="375" Width="670" VerticalAlignment="Top" Margin="0,-110,10,0" ItemsSource="{Binding Quests, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedQuest, UpdateSourceTrigger=PropertyChanged}"/>
+                            <ListView FontSize="28" Foreground="{StaticResource TextActiveColor}" HorizontalAlignment ="Right" Height="340" Width="670" Margin="0,-110,10,0" ItemsSource="{Binding Quests, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedQuest, UpdateSourceTrigger=PropertyChanged}">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Тип задания" DisplayMemberBinding="{Binding TypeOfTask}" Width="230"/>
+                                        <GridViewColumn Header="Дата выдачи" DisplayMemberBinding="{Binding DateOfCompletion}" Width="170"/>
+                                        <GridViewColumn Header="Критерии оценки" DisplayMemberBinding="{Binding NumberOfPoints}" Width="270"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
                         </StackPanel>
                     </TabItem>
 
                     <TabItem Header="Оценки" Background="{StaticResource TextPassiveColor}" Foreground="{StaticResource AccentColor}" VerticalAlignment="Top" Height="31">
                         <StackPanel Height="400" Background="{StaticResource AccentColor}" HorizontalAlignment="Left" Width="795">
                             <StackPanel.Resources>
-                                
+
                             </StackPanel.Resources>
                             <Button Content="Добавить" Command="{Binding GAddCommand}"/>
                             <Button Content="Обновить" Command="{Binding GUpdateCommand}"/>
                             <Button Content="Удалить" Command="{Binding GRemoveCommand}"/>
-                            <ListView FontSize="28" Foreground="{StaticResource TextActiveColor}" HorizontalAlignment ="Right" Height="375" Width="670" VerticalAlignment="Top" Margin="0,-110,10,0" ItemsSource="{Binding Grades, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedGrade, UpdateSourceTrigger=PropertyChanged}"/>
+                            <ListView FontSize="26" Foreground="{StaticResource TextActiveColor}" HorizontalAlignment ="Right" Height="340" Width="670" Margin="0,-110,10,0" ItemsSource="{Binding Grades, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedGrade, UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Visible" d:ItemsSource="{d:SampleData ItemCount=5}">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Получ. очки" DisplayMemberBinding="{Binding ReceivedPoint}" Width="150"/>
+                                        <GridViewColumn Header="Доп. очки" DisplayMemberBinding="{Binding ExtraPoint}" Width="140"/>
+                                        <GridViewColumn Header="Дата сдачи" DisplayMemberBinding="{Binding DateOfAssessment}" Width="140"/>
+                                        <GridViewColumn Header="Задание" DisplayMemberBinding="{Binding Quest.TypeOfTask}" Width="170"/>
+                                        <GridViewColumn Header="Студент" DisplayMemberBinding="{Binding Student.FIO}" Width="200"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
 
                         </StackPanel>
                     </TabItem>
@@ -95,7 +132,7 @@
 
                     <TabItem Header="Рейтинг" Background="{StaticResource TextPassiveColor}" Foreground="{StaticResource AccentColor}">
                         <StackPanel Background="{StaticResource AccentColor}" Width="795" >
-                            <ListView FontSize="22" HorizontalAlignment ="Right" Height="375" Width="775" Margin="0,10,10,0" ItemsSource="{Binding Grades, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedGrade, UpdateSourceTrigger=PropertyChanged}" Foreground="{StaticResource TextActiveColor}">
+                            <ListView FontSize="22" HorizontalAlignment ="Right" Height="340" Width="775" Margin="0,10,10,0" ItemsSource="{Binding Grades, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedGrade, UpdateSourceTrigger=PropertyChanged}" Foreground="{StaticResource TextActiveColor}">
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Header="Студент" DisplayMemberBinding="{Binding Student.FIO}" Width="160"/>
