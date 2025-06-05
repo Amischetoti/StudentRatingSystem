@@ -48,13 +48,13 @@ namespace StudentRatingSystemApp.ViewModels
                 if (teacher == null)
                 {
                     _teacherService.Add(new Teacher() { Teacher_id = Guid.NewGuid(), FIO = this.FIO, Contact = this.Contact });
-                    MessageBox.Show("Препод добавлен!");
+                    MessageBox.Show("Преподаватель добавлен!");
                 }
                 // Обновление существующего преподавателя.
                 else
                 {
                     _teacherService.Update(teacher, new Teacher() { Teacher_id = Guid.NewGuid(), FIO = this.FIO, Contact = this.Contact });
-                    MessageBox.Show("Препод изменён!");
+                    MessageBox.Show("Преподаватель изменён!");
                 }
             });
 
