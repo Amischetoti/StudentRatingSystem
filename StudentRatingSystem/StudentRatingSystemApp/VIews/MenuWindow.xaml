@@ -97,7 +97,7 @@
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Header="Тип задания" DisplayMemberBinding="{Binding TypeOfTask}" Width="230"/>
-                                        <GridViewColumn Header="Дата выдачи" DisplayMemberBinding="{Binding DateOfCompletion}" Width="170"/>
+                                        <GridViewColumn Header="Дата выдачи" DisplayMemberBinding="{Binding OnlyDateOfComplection}" Width="170"/>
                                         <GridViewColumn Header="Критерии оценки" DisplayMemberBinding="{Binding NumberOfPoints}" Width="270"/>
                                     </GridView>
                                 </ListView.View>
@@ -118,7 +118,7 @@
                                     <GridView>
                                         <GridViewColumn Header="Получ. очки" DisplayMemberBinding="{Binding ReceivedPoint}" Width="150"/>
                                         <GridViewColumn Header="Доп. очки" DisplayMemberBinding="{Binding ExtraPoint}" Width="140"/>
-                                        <GridViewColumn Header="Дата сдачи" DisplayMemberBinding="{Binding DateOfAssessment}" Width="140"/>
+                                        <GridViewColumn Header="Дата сдачи" DisplayMemberBinding="{Binding OnlyDateOfAssessment}" Width="140"/>
                                         <GridViewColumn Header="Задание" DisplayMemberBinding="{Binding Quest.TypeOfTask}" Width="170"/>
                                         <GridViewColumn Header="Студент" DisplayMemberBinding="{Binding Student.FIO}" Width="200"/>
                                     </GridView>

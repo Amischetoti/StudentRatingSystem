@@ -31,29 +31,33 @@ namespace StudentRatingSystemApp.ViewModels
                 DateOfCompletion = quest.DateOfCompletion;
                 NumberOfPoints = quest.NumberOfPoints;
             }
-
-            SaveCommand = new RelayCommand(o =>
+            else 
             {
-                if (!ValidateData()) return;
-                if (quest == null)
-                {
-                    _questService.Add(new Quest() { Quest_id = Guid.NewGuid(), TypeOfTask = this.TypeOfTask, DateOfCompletion = this.DateOfCompletion, NumberOfPoints = this.NumberOfPoints});
-                    MessageBox.Show("Задание добавлено!");
-                }
-                else
-                {
+                DateOfCompletion = DateTime.Now;
+            }
 
-                    _questService.Update(quest, new Quest() {Quest_id = Guid.NewGuid(), TypeOfTask = this.TypeOfTask, DateOfCompletion = this.DateOfCompletion, NumberOfPoints = this.NumberOfPoints});
-                    MessageBox.Show("Задание изменено!");
-                }
-            });
+                SaveCommand = new RelayCommand(o =>
+                {
+                    if (!ValidateData()) return;
+                    if (quest == null)
+                    {
+                        _questService.Add(new Quest() { Quest_id = Guid.NewGuid(), TypeOfTask = this.TypeOfTask, DateOfCompletion = this.DateOfCompletion, NumberOfPoints = this.NumberOfPoints });
+                        MessageBox.Show("Задание добавлено!");
+                    }
+                    else
+                    {
+
+                        _questService.Update(quest, new Quest() { Quest_id = Guid.NewGuid(), TypeOfTask = this.TypeOfTask, DateOfCompletion = this.DateOfCompletion, NumberOfPoints = this.NumberOfPoints });
+                        MessageBox.Show("Задание изменено!");
+                    }
+                });
             CloseCommand = new RelayCommand(o =>
             {
                 AppClose();
             });
         }
         private string typeOfTask = string.Empty;
-        private string dateOfCompletion = string.Empty;
+        private DateTime dateOfCompletion;
         private string numberOfPoints = string.Empty;
         private QuestService _questService;
 
@@ -82,7 +86,16 @@ namespace StudentRatingSystemApp.ViewModels
         /// <summary>
         /// Получает или задает дату выполнения задания.
         /// </summary>
-        public string DateOfCompletion { get => dateOfCompletion; set => Set(ref dateOfCompletion, value, nameof(dateOfCompletion)); }
+        public DateTime DateOfCompletion { get => dateOfCompletion; set
+            {
+                if (value == null)
+                {
+                    MessageBox.Show("Поле 'Дата выдачи задания' не может быть пустым.");
+                    return;
+                }
+                Set(ref dateOfCompletion, value, nameof(dateOfCompletion));
+            }
+        }
 
         /// <summary>
         /// Получает или задает количество баллов за задание.
@@ -116,6 +129,11 @@ namespace StudentRatingSystemApp.ViewModels
         /// <returns><c>true</c>, если данные валидны, иначе <c>false</c>.</returns>
         private bool ValidateData()
         {
+            if (DateOfCompletion == null)
+            {
+                MessageBox.Show("Поле 'Дата выдачи задания' не может быть пустым.");
+                return false;
+            }
             if (string.IsNullOrEmpty(TypeOfTask))
             {
                 MessageBox.Show("Поле 'Тип задания' не может быть пустым.");

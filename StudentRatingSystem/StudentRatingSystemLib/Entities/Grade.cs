@@ -30,9 +30,9 @@ namespace StudentRatingSystemLib.Entities
         public decimal ExtraPoint { get; set; }
 
         /// <summary>
-        /// Дата оценки (в строковом формате).
+        /// Дата оценки.
         /// </summary>
-        public string? DateOfAssessment { get; set; }
+        public DateTime DateOfAssessment { get; set; }
 
         /// <summary>
         /// Идентификатор задания (внешний ключ).
@@ -70,8 +70,10 @@ namespace StudentRatingSystemLib.Entities
 
         /// <summary>
         /// Итоговый балл (сумма полученных и дополнительных баллов).
+        /// Свойство, выводящее только дату оценивания, преобразует её в строковый формат.
         /// </summary>
         [NotMapped]
         public decimal FinalScore => ReceivedPoint + ExtraPoint;
+        public string OnlyDateOfAssessment => DateOfAssessment.ToString("d");
     }
 }

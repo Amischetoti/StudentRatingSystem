@@ -17,7 +17,7 @@ namespace StudentRatingSystemDbContext.Migrations
                 {
                     Quest_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TypeOfTask = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DateOfCompletion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateOfCompletion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     NumberOfPoints = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -101,7 +101,7 @@ namespace StudentRatingSystemDbContext.Migrations
                     Grade_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ReceivedPoint = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ExtraPoint = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    DateOfAssessment = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateOfAssessment = table.Column<DateTime>(type: "datetime2", nullable: false),
                     QuestId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     StudentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Position = table.Column<int>(type: "int", nullable: false)

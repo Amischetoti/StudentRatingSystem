@@ -12,7 +12,7 @@ using StudentRatingSystemDbContext.Connections;
 namespace StudentRatingSystemDbContext.Migrations
 {
     [DbContext(typeof(SQLServerDbContext))]
-    [Migration("20250528055149_Initial")]
+    [Migration("20250607065707_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -31,8 +31,8 @@ namespace StudentRatingSystemDbContext.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("DateOfAssessment")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("DateOfAssessment")
+                        .HasColumnType("datetime2");
 
                     b.Property<decimal>("ExtraPoint")
                         .HasColumnType("decimal(18,2)");
@@ -64,8 +64,8 @@ namespace StudentRatingSystemDbContext.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("DateOfCompletion")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("DateOfCompletion")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("NumberOfPoints")
                         .HasColumnType("nvarchar(max)");

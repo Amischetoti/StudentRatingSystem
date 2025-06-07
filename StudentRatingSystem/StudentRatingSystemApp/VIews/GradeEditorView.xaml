@@ -21,7 +21,7 @@
 
             <Label Content="Дата сдачи"  HorizontalAlignment="Center" Foreground="{StaticResource TextActiveColor}"/>
 
-            <TextBox Text="{Binding DateOfAssessment, UpdateSourceTrigger=PropertyChanged}"  Width="300" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True" VerticalContentAlignment="Top" HorizontalAlignment="Center"/>
+            <DatePicker SelectedDate="{Binding DateOfAssessment, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Width="300"/>
 
             <Label Content="Задание" HorizontalAlignment="Center" Foreground="{StaticResource TextActiveColor}"/>
             <ComboBox ItemsSource="{Binding Quests, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Center"

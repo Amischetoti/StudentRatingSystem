@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace StudentRatingSystemLib.Entities
         /// <summary>
         /// Дата выполнения задания.
         /// </summary>
-        public string? DateOfCompletion { get; set; }
+        public DateTime DateOfCompletion { get; set; }
 
         /// <summary>
         /// Количество баллов, максимально возможных за задание.
@@ -42,5 +43,11 @@ namespace StudentRatingSystemLib.Entities
         {
             return $"{TypeOfTask}, {NumberOfPoints}";
         }
+
+        /// <summary>
+        /// Свойство, выводящее только дату выполнения задачи, преобразует её в строковый формат.
+        /// </summary>
+        [NotMapped]
+        public string OnlyDateOfComplection => DateOfCompletion.ToString("d");
     }
 }

@@ -42,46 +42,49 @@ namespace StudentRatingSystemApp.ViewModels
                 SelectedQuest = grade.Quest;
                 SelectedStudent = grade.Student;
             }
-
-            /// <summary>
-            /// Команда для сохранения оценки — добавляет новую или обновляет существующую.
-            /// Проверяет корректность введенных данных и вызывает методы сервиса.
-            /// </summary>
-            SaveCommand = new RelayCommand(o =>
+            else 
             {
-                if (!ValidateData()) return;
-                if (grade == null)
+                DateOfAssessment = DateTime.Now;
+            }
+                /// <summary>
+                /// Команда для сохранения оценки — добавляет новую или обновляет существующую.
+                /// Проверяет корректность введенных данных и вызывает методы сервиса.
+                /// </summary>
+                SaveCommand = new RelayCommand(o =>
                 {
-                    var newGrade = new Grade()
+                    if (!ValidateData()) return;
+                    if (grade == null)
                     {
-                        Grade_id = Guid.NewGuid(),
-                        ReceivedPoint = this.ReceivedPoint,
-                        ExtraPoint = this.ExtraPoint,
-                        DateOfAssessment = this.DateOfAssessment,
-                        QuestId = Guid.NewGuid(),
-                        Quest = this.SelectedQuest,
-                        StudentId = Guid.NewGuid(),
-                        Student = this.SelectedStudent
-                    };
-                    _gradeService.Add(newGrade);
-                    MessageBox.Show("Оценка добавлена");
-                }
-                else
-                {
-                    _gradeService.Update(grade, new Grade()
+                        var newGrade = new Grade()
+                        {
+                            Grade_id = Guid.NewGuid(),
+                            ReceivedPoint = this.ReceivedPoint,
+                            ExtraPoint = this.ExtraPoint,
+                            DateOfAssessment = this.DateOfAssessment,
+                            QuestId = Guid.NewGuid(),
+                            Quest = this.SelectedQuest,
+                            StudentId = Guid.NewGuid(),
+                            Student = this.SelectedStudent
+                        };
+                        _gradeService.Add(newGrade);
+                        MessageBox.Show("Оценка добавлена");
+                    }
+                    else
                     {
-                        Grade_id = Guid.NewGuid(),
-                        ReceivedPoint = this.ReceivedPoint,
-                        ExtraPoint = this.ExtraPoint,
-                        DateOfAssessment = this.DateOfAssessment,
-                        QuestId = Guid.NewGuid(),
-                        Quest = this.SelectedQuest,
-                        StudentId = Guid.NewGuid(),
-                        Student = this.SelectedStudent
-                    });
-                    MessageBox.Show("Оценка изменена");
-                }
-            });
+                        _gradeService.Update(grade, new Grade()
+                        {
+                            Grade_id = Guid.NewGuid(),
+                            ReceivedPoint = this.ReceivedPoint,
+                            ExtraPoint = this.ExtraPoint,
+                            DateOfAssessment = this.DateOfAssessment,
+                            QuestId = Guid.NewGuid(),
+                            Quest = this.SelectedQuest,
+                            StudentId = Guid.NewGuid(),
+                            Student = this.SelectedStudent
+                        });
+                        MessageBox.Show("Оценка изменена");
+                    }
+                });
 
             /// <summary>
             /// Команда для закрытия приложения.
@@ -94,7 +97,7 @@ namespace StudentRatingSystemApp.ViewModels
 
         private decimal receivedPoint;
         private decimal extraPoint;
-        private string dateOfAssessment = string.Empty;
+        private DateTime dateOfAssessment;
         private Quest selectedQuest;
         private Student selectedStudent;
 
@@ -158,12 +161,12 @@ namespace StudentRatingSystemApp.ViewModels
         /// Дата сдачи задания в виде строки.
         /// Не может быть пустой или null.
         /// </summary>
-        public string DateOfAssessment
+        public DateTime DateOfAssessment
         {
             get => dateOfAssessment;
             set
             {
-                if (string.IsNullOrEmpty(value))
+                if (value == null)
                 {
                     MessageBox.Show("Поле 'Дата сдачи' не может быть пустым.");
                     return;
@@ -258,7 +261,7 @@ namespace StudentRatingSystemApp.ViewModels
                 return false;
             }
 
-            if (string.IsNullOrEmpty(DateOfAssessment))
+            if (DateOfAssessment == null)
             {
                 MessageBox.Show("Поле 'Дата сдачи' не может быть пустым.");
                 return false;
